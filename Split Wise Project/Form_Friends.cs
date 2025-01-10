@@ -15,6 +15,7 @@ namespace Split_Wise_Project
         public Form_Friends()
         {
             InitializeComponent();
+//test
         }
     }
 }
