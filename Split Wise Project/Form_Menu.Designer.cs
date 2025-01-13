@@ -31,7 +31,7 @@
             But_Groups = new PictureBox();
             But_Friends = new PictureBox();
             But_Hist = new PictureBox();
-            panel1 = new Panel();
+            Panel_Principal = new Panel();
             ((System.ComponentModel.ISupportInitialize)But_Groups).BeginInit();
             ((System.ComponentModel.ISupportInitialize)But_Friends).BeginInit();
             ((System.ComponentModel.ISupportInitialize)But_Hist).BeginInit();
@@ -46,6 +46,7 @@
             But_Groups.SizeMode = PictureBoxSizeMode.Zoom;
             But_Groups.TabIndex = 0;
             But_Groups.TabStop = false;
+            But_Groups.Click += But_Groups_Click;
             // 
             // But_Friends
             // 
@@ -56,6 +57,7 @@
             But_Friends.SizeMode = PictureBoxSizeMode.Zoom;
             But_Friends.TabIndex = 1;
             But_Friends.TabStop = false;
+            But_Friends.Click += But_Friends_Click;
             // 
             // But_Hist
             // 
@@ -66,20 +68,21 @@
             But_Hist.SizeMode = PictureBoxSizeMode.Zoom;
             But_Hist.TabIndex = 2;
             But_Hist.TabStop = false;
+            But_Hist.Click += But_Hist_Click;
             // 
-            // panel1
+            // Panel_Principal
             // 
-            panel1.Location = new Point(12, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(336, 353);
-            panel1.TabIndex = 3;
+            Panel_Principal.Location = new Point(12, 12);
+            Panel_Principal.Name = "Panel_Principal";
+            Panel_Principal.Size = new Size(336, 353);
+            Panel_Principal.TabIndex = 3;
             // 
             // Form_Menu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(360, 450);
-            Controls.Add(panel1);
+            Controls.Add(Panel_Principal);
             Controls.Add(But_Hist);
             Controls.Add(But_Friends);
             Controls.Add(But_Groups);
@@ -96,6 +99,6 @@
         private PictureBox But_Groups;
         private PictureBox But_Friends;
         private PictureBox But_Hist;
-        private Panel panel1;
+        private Panel Panel_Principal;
     }
 }
