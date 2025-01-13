@@ -28,31 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // pictureBox1
             // 
-            button1.Location = new Point(137, 84);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 0;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
+            pictureBox1.Image = Properties.Resources.But_New_Friend;
+            pictureBox1.Location = new Point(255, 265);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(65, 50);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 1;
+            pictureBox1.TabStop = false;
             // 
             // Form_Friends
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(366, 325);
-            Controls.Add(button1);
+            ClientSize = new Size(320, 314);
+            Controls.Add(pictureBox1);
             Name = "Form_Friends";
             Text = "Form_Friends";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button button1;
+        private PictureBox pictureBox1;
     }
 }
