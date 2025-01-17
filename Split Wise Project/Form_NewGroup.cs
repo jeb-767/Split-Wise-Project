@@ -10,18 +10,21 @@ using System.Windows.Forms;
 
 namespace Split_Wise_Project
 {
-    public partial class Form_Friends : Form
+    public partial class Form_NewGroup : Form
     {
-        public Form_Friends()
+        public Form_NewGroup()
         {
             InitializeComponent();
-            //test
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void But_Groups_Cancel_Click(object sender, EventArgs e)
         {
-            Form new_friend = new Form_NewFriend();
-            new_friend.Show();
+            this.Close();
+        }
+
+        private void But_Groups_Create_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

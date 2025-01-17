@@ -16,5 +16,11 @@ namespace Split_Wise_Project
         {
             InitializeComponent();
         }
+
+        private void But_New_Group_Click(object sender, EventArgs e)
+        {
+            Form new_group = new Form_NewGroup();
+            new_group.Show();
+        }
     }
 }

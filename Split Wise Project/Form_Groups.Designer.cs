@@ -35,12 +35,13 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.But_New_Group1;
-            pictureBox1.Location = new Point(243, 252);
+            pictureBox1.Location = new Point(255, 265);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(65, 50);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += But_New_Group_Click;
             // 
             // Form_Groups
             // 

@@ -123,6 +123,16 @@ namespace Split_Wise_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap But_New_Group_Perfil_Image {
+            get {
+                object obj = ResourceManager.GetObject("But_New_Group_Perfil_Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap But_New_Group1 {
             get {
                 object obj = ResourceManager.GetObject("But_New_Group1", resourceCulture);
