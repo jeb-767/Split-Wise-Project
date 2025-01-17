@@ -28,12 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form_Hist";
+            listView1 = new ListView();
+            SuspendLayout();
+            // 
+            // listView1
+            // 
+            listView1.Location = new Point(12, 12);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(290, 287);
+            listView1.TabIndex = 0;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // Form_Hist
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(320, 314);
+            Controls.Add(listView1);
+            Name = "Form_Hist";
+            Text = "Form_Hist";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private ListView listView1;
     }
 }

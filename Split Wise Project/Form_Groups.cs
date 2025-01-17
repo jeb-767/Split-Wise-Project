@@ -14,7 +14,16 @@ namespace Split_Wise_Project
     {
         public Form_Groups()
         {
+            list_grups_ref = this.List_View_Groups;
             InitializeComponent();
+            ColumnHeader columna1 = new ColumnHeader();
+            List_View_Groups.Columns.Add(columna1);
+            List_View_Groups.View = View.Details;
+            List_View_Groups.HeaderStyle = ColumnHeaderStyle.None;
+            foreach (string v in Form_NewGroup.List_Groups)
+            {
+                List_View_Groups.Items.Add(v);
+            }
         }
 
         private void But_New_Group_Click(object sender, EventArgs e)

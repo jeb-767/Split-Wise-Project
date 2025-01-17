@@ -28,35 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            But_New_Group = new PictureBox();
+            List_View_Groups = new ListView();
+            panel1 = new Panel();
+            ((System.ComponentModel.ISupportInitialize)But_New_Group).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // But_New_Group
             // 
-            pictureBox1.Image = Properties.Resources.But_New_Group1;
-            pictureBox1.Location = new Point(255, 265);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(65, 50);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += But_New_Group_Click;
+            But_New_Group.Image = Properties.Resources.But_New_Group1;
+            But_New_Group.Location = new Point(255, 265);
+            But_New_Group.Name = "But_New_Group";
+            But_New_Group.Size = new Size(65, 50);
+            But_New_Group.SizeMode = PictureBoxSizeMode.Zoom;
+            But_New_Group.TabIndex = 0;
+            But_New_Group.TabStop = false;
+            But_New_Group.Click += But_New_Group_Click;
+            // 
+            // List_View_Groups
+            // 
+            List_View_Groups.BackColor = SystemColors.MenuBar;
+            List_View_Groups.BorderStyle = BorderStyle.None;
+            List_View_Groups.Location = new Point(12, 12);
+            List_View_Groups.Name = "List_View_Groups";
+            List_View_Groups.Size = new Size(296, 247);
+            List_View_Groups.TabIndex = 1;
+            List_View_Groups.UseCompatibleStateImageBehavior = false;
+            // 
+            // panel1
+            // 
+            panel1.Location = new Point(27, 292);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(316, 313);
+            panel1.TabIndex = 2;
+            panel1.Visible = false;
             // 
             // Form_Groups
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
-            Controls.Add(pictureBox1);
+            Controls.Add(panel1);
+            Controls.Add(List_View_Groups);
+            Controls.Add(But_New_Group);
             Name = "Form_Groups";
             Text = "Form_Groups";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)But_New_Group).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox But_New_Group;
+        private ListView List_View_Groups;
+        private Panel panel1;
     }
 }

@@ -31,9 +31,9 @@
             textBox4 = new TextBox();
             button2 = new Button();
             button1 = new Button();
-            textBox3 = new TextBox();
+            TB_NewGroup_Description = new TextBox();
             pictureBox1 = new PictureBox();
-            textBox2 = new TextBox();
+            TB_NewGroup_Name = new TextBox();
             textBox1 = new TextBox();
             pictureBox2 = new PictureBox();
             listView1 = new ListView();
@@ -76,14 +76,14 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += But_Groups_Cancel_Click;
             // 
-            // textBox3
+            // TB_NewGroup_Description
             // 
-            textBox3.BackColor = SystemColors.MenuBar;
-            textBox3.Location = new Point(118, 76);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(190, 23);
-            textBox3.TabIndex = 18;
-            textBox3.Text = "Descripción";
+            TB_NewGroup_Description.BackColor = SystemColors.MenuBar;
+            TB_NewGroup_Description.Location = new Point(118, 76);
+            TB_NewGroup_Description.Name = "TB_NewGroup_Description";
+            TB_NewGroup_Description.Size = new Size(190, 23);
+            TB_NewGroup_Description.TabIndex = 18;
+            TB_NewGroup_Description.Text = "Descripción";
             // 
             // pictureBox1
             // 
@@ -95,14 +95,14 @@
             pictureBox1.TabIndex = 17;
             pictureBox1.TabStop = false;
             // 
-            // textBox2
+            // TB_NewGroup_Name
             // 
-            textBox2.BackColor = SystemColors.MenuBar;
-            textBox2.Location = new Point(118, 47);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(190, 23);
-            textBox2.TabIndex = 16;
-            textBox2.Text = "Nombre del Grupo";
+            TB_NewGroup_Name.BackColor = SystemColors.MenuBar;
+            TB_NewGroup_Name.Location = new Point(118, 47);
+            TB_NewGroup_Name.Name = "TB_NewGroup_Name";
+            TB_NewGroup_Name.Size = new Size(190, 23);
+            TB_NewGroup_Name.TabIndex = 16;
+            TB_NewGroup_Name.Text = "Nombre del Grupo";
             // 
             // textBox1
             // 
@@ -146,9 +146,9 @@
             Controls.Add(textBox4);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(textBox3);
+            Controls.Add(TB_NewGroup_Description);
             Controls.Add(pictureBox1);
-            Controls.Add(textBox2);
+            Controls.Add(TB_NewGroup_Name);
             Controls.Add(textBox1);
             Name = "Form_NewGroup";
             Text = "Form_NewGroup";
@@ -162,9 +162,9 @@
         private TextBox textBox4;
         private Button button2;
         private Button button1;
-        private TextBox textBox3;
+        private TextBox TB_NewGroup_Description;
         private PictureBox pictureBox1;
-        private TextBox textBox2;
+        private TextBox TB_NewGroup_Name;
         private TextBox textBox1;
         private PictureBox pictureBox2;
         private ListView listView1;
