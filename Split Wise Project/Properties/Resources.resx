@@ -121,6 +121,9 @@
   <data name="But_Friends" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\But_Friends.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="But_New_Group_Perfil_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\But_New_Group_Perfil_Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="But_Hist" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\But_Hist.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -139,7 +142,7 @@
   <data name="But_New_Group" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\But_New_Group.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="But_New_Group_Perfil_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\But_New_Group_Perfil_Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="But_New_Friend_Hold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\But_New_Friend_Hold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -25,7 +25,6 @@ namespace Split_Wise_Project
 
         private void But_Groups_Create_Click(object sender, EventArgs e)
         {
-            //List_Groups.Add(TB_NewGroup_Name.Text + "," + TB_NewGroup_Description.Text);
             this.Close();
         }
     }

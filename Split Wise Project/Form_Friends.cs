@@ -23,5 +23,15 @@ namespace Split_Wise_Project
             Form new_friend = new Form_NewFriend();
             new_friend.Show();
         }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            PB_New_Friend.Image = Properties.Resources.But_New_Friend_Hold;
+        }
+
+        private void PB_New_Friend_MouseLeave(object sender, EventArgs e)
+        {
+            PB_New_Friend.Image = Properties.Resources.But_New_Friend;
+        }
     }
 }

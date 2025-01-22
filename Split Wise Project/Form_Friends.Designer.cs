@@ -28,35 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            PB_New_Friend = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)PB_New_Friend).BeginInit();
             SuspendLayout();
             // 
-            // pictureBox1
+            // PB_New_Friend
             // 
-            pictureBox1.Image = Properties.Resources.But_New_Friend;
-            pictureBox1.Location = new Point(255, 265);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(65, 50);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            PB_New_Friend.Image = Properties.Resources.But_New_Friend;
+            PB_New_Friend.Location = new Point(255, 265);
+            PB_New_Friend.Name = "PB_New_Friend";
+            PB_New_Friend.Size = new Size(65, 50);
+            PB_New_Friend.SizeMode = PictureBoxSizeMode.Zoom;
+            PB_New_Friend.TabIndex = 1;
+            PB_New_Friend.TabStop = false;
+            PB_New_Friend.Click += pictureBox1_Click;
+            PB_New_Friend.MouseEnter += pictureBox1_MouseEnter;
+            PB_New_Friend.MouseLeave += PB_New_Friend_MouseLeave;
             // 
             // Form_Friends
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
-            Controls.Add(pictureBox1);
+            Controls.Add(PB_New_Friend);
             Name = "Form_Friends";
             Text = "Form_Friends";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PB_New_Friend).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private PictureBox pictureBox1;
+        private PictureBox PB_New_Friend;
     }
 }

@@ -44,11 +44,13 @@
             // textBox4
             // 
             textBox4.BackColor = SystemColors.MenuBar;
+            textBox4.BorderStyle = BorderStyle.None;
             textBox4.Enabled = false;
             textBox4.Font = new Font("Broadway", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox4.ForeColor = SystemColors.MenuText;
             textBox4.Location = new Point(12, 115);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(190, 26);
+            textBox4.Size = new Size(190, 19);
             textBox4.TabIndex = 21;
             textBox4.Text = "Miembros";
             // 
@@ -110,6 +112,7 @@
             textBox1.BorderStyle = BorderStyle.None;
             textBox1.Enabled = false;
             textBox1.Font = new Font("Broadway", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox1.ForeColor = SystemColors.MenuText;
             textBox1.Location = new Point(12, 12);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(296, 22);
