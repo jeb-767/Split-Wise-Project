@@ -30,13 +30,12 @@
         {
             But_New_Group = new PictureBox();
             List_View_Groups = new ListView();
-            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)But_New_Group).BeginInit();
             SuspendLayout();
             // 
             // But_New_Group
             // 
-            But_New_Group.Image = Properties.Resources.But_New_Group1;
+            But_New_Group.Image = Properties.Resources.But_New_Group;
             But_New_Group.Location = new Point(255, 265);
             But_New_Group.Name = "But_New_Group";
             But_New_Group.Size = new Size(65, 50);
@@ -44,6 +43,8 @@
             But_New_Group.TabIndex = 0;
             But_New_Group.TabStop = false;
             But_New_Group.Click += But_New_Group_Click;
+            But_New_Group.MouseEnter += But_New_Group_MouseEnter;
+            But_New_Group.MouseLeave += But_New_Group_MouseLeave;
             // 
             // List_View_Groups
             // 
@@ -55,20 +56,11 @@
             List_View_Groups.TabIndex = 1;
             List_View_Groups.UseCompatibleStateImageBehavior = false;
             // 
-            // panel1
-            // 
-            panel1.Location = new Point(27, 292);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(316, 313);
-            panel1.TabIndex = 2;
-            panel1.Visible = false;
-            // 
             // Form_Groups
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
-            Controls.Add(panel1);
             Controls.Add(List_View_Groups);
             Controls.Add(But_New_Group);
             Name = "Form_Groups";
@@ -81,6 +73,5 @@
 
         private PictureBox But_New_Group;
         private ListView List_View_Groups;
-        private Panel panel1;
     }
 }

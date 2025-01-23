@@ -39,6 +39,7 @@
             // 
             // But_Groups
             // 
+            But_Groups.BackColor = SystemColors.Control;
             But_Groups.Image = Properties.Resources.But_Groups;
             But_Groups.Location = new Point(12, 371);
             But_Groups.Name = "But_Groups";
@@ -47,6 +48,8 @@
             But_Groups.TabIndex = 0;
             But_Groups.TabStop = false;
             But_Groups.Click += But_Groups_Click;
+            But_Groups.MouseEnter += But_Groups_MouseEnter;
+            But_Groups.MouseLeave += But_Groups_MouseLeave;
             // 
             // But_Friends
             // 
@@ -58,6 +61,8 @@
             But_Friends.TabIndex = 1;
             But_Friends.TabStop = false;
             But_Friends.Click += But_Friends_Click;
+            But_Friends.MouseEnter += But_Friends_MouseEnter;
+            But_Friends.MouseLeave += But_Friends_MouseLeave;
             // 
             // But_Hist
             // 
@@ -69,6 +74,8 @@
             But_Hist.TabIndex = 2;
             But_Hist.TabStop = false;
             But_Hist.Click += But_Hist_Click;
+            But_Hist.MouseEnter += But_Hist_MouseEnter;
+            But_Hist.MouseLeave += But_Hist_MouseLeave;
             // 
             // Panel_Principal
             // 

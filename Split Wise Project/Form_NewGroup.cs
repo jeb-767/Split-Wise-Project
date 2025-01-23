@@ -25,7 +25,31 @@ namespace Split_Wise_Project
 
         private void But_Groups_Create_Click(object sender, EventArgs e)
         {
+            Form_Groups Grupos = (Form_Groups) Form_Menu.Panel_Principal_Ref.Controls.OfType<Form_Groups>().FirstOrDefault();
+            if (Grupos != null) {
+                Grupos.Add_To_List_Groups(TB_NewGroup_Name.Text);
+            }
             this.Close();
+        }
+
+        private void PB_New_Member_MouseEnter(object sender, EventArgs e)
+        {
+            PB_New_Member.Image = Properties.Resources.But_New_Friend_Hold;
+        }
+
+        private void PB_New_Member_MouseLeave(object sender, EventArgs e)
+        {
+            PB_New_Member.Image = Properties.Resources.But_New_Friend;
+        }
+
+        private void PB_New_Icon_MouseEnter(object sender, EventArgs e)
+        {
+            PB_New_Icon.Image = Properties.Resources.But_New_Photo_Hold;
+        }
+
+        private void PB_New_Icon_MouseLeave(object sender, EventArgs e)
+        {
+            PB_New_Icon.Image = Properties.Resources.But_New_Photo;
         }
     }
 }

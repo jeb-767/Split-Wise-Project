@@ -32,13 +32,13 @@
             button2 = new Button();
             button1 = new Button();
             TB_NewGroup_Description = new TextBox();
-            pictureBox1 = new PictureBox();
+            PB_New_Icon = new PictureBox();
             TB_NewGroup_Name = new TextBox();
             textBox1 = new TextBox();
-            pictureBox2 = new PictureBox();
+            PB_New_Member = new PictureBox();
             listView1 = new ListView();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PB_New_Icon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PB_New_Member).BeginInit();
             SuspendLayout();
             // 
             // textBox4
@@ -87,15 +87,17 @@
             TB_NewGroup_Description.TabIndex = 18;
             TB_NewGroup_Description.Text = "Descripción";
             // 
-            // pictureBox1
+            // PB_New_Icon
             // 
-            pictureBox1.Image = Properties.Resources.But_New_Group_Perfil_Image;
-            pictureBox1.Location = new Point(12, 47);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(100, 52);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 17;
-            pictureBox1.TabStop = false;
+            PB_New_Icon.Image = Properties.Resources.But_New_Photo;
+            PB_New_Icon.Location = new Point(12, 47);
+            PB_New_Icon.Name = "PB_New_Icon";
+            PB_New_Icon.Size = new Size(100, 52);
+            PB_New_Icon.SizeMode = PictureBoxSizeMode.Zoom;
+            PB_New_Icon.TabIndex = 17;
+            PB_New_Icon.TabStop = false;
+            PB_New_Icon.MouseEnter += PB_New_Icon_MouseEnter;
+            PB_New_Icon.MouseLeave += PB_New_Icon_MouseLeave;
             // 
             // TB_NewGroup_Name
             // 
@@ -120,15 +122,17 @@
             textBox1.Text = "Crear Nuevo Grupo\r\n";
             textBox1.TextAlign = HorizontalAlignment.Center;
             // 
-            // pictureBox2
+            // PB_New_Member
             // 
-            pictureBox2.Image = Properties.Resources.But_New_Friend;
-            pictureBox2.Location = new Point(208, 105);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(100, 52);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 22;
-            pictureBox2.TabStop = false;
+            PB_New_Member.Image = Properties.Resources.But_New_Friend;
+            PB_New_Member.Location = new Point(208, 105);
+            PB_New_Member.Name = "PB_New_Member";
+            PB_New_Member.Size = new Size(100, 52);
+            PB_New_Member.SizeMode = PictureBoxSizeMode.Zoom;
+            PB_New_Member.TabIndex = 22;
+            PB_New_Member.TabStop = false;
+            PB_New_Member.MouseEnter += PB_New_Member_MouseEnter;
+            PB_New_Member.MouseLeave += PB_New_Member_MouseLeave;
             // 
             // listView1
             // 
@@ -145,18 +149,18 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
             Controls.Add(listView1);
-            Controls.Add(pictureBox2);
+            Controls.Add(PB_New_Member);
             Controls.Add(textBox4);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(TB_NewGroup_Description);
-            Controls.Add(pictureBox1);
+            Controls.Add(PB_New_Icon);
             Controls.Add(TB_NewGroup_Name);
             Controls.Add(textBox1);
             Name = "Form_NewGroup";
             Text = "Form_NewGroup";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PB_New_Icon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PB_New_Member).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -166,10 +170,10 @@
         private Button button2;
         private Button button1;
         private TextBox TB_NewGroup_Description;
-        private PictureBox pictureBox1;
+        private PictureBox PB_New_Icon;
         private TextBox TB_NewGroup_Name;
         private TextBox textBox1;
-        private PictureBox pictureBox2;
+        private PictureBox PB_New_Member;
         private ListView listView1;
     }
 }

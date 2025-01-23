@@ -26,5 +26,21 @@ namespace Split_Wise_Project
             Form new_group = new Form_NewGroup();
             new_group.Show();
         }
+
+        private void But_New_Group_MouseEnter(object sender, EventArgs e)
+        {
+            But_New_Group.Image = Properties.Resources.But_New_Group_Hold;
+        }
+
+        private void But_New_Group_MouseLeave(object sender, EventArgs e)
+        {
+            But_New_Group.Image = Properties.Resources.But_New_Group;
+        }
+
+        public void Add_To_List_Groups(string group_name)
+        {
+            ListViewItem item = new ListViewItem(group_name);
+            List_View_Groups.Items.Add(item);
+        }
     }
 }

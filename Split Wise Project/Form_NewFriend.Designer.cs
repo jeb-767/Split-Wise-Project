@@ -65,7 +65,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.But_New_Group_Perfil_Image;
+            pictureBox1.Image = Properties.Resources.But_New_Photo;
             pictureBox1.Location = new Point(12, 42);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(100, 52);

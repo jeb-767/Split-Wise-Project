@@ -73,9 +73,29 @@ namespace Split_Wise_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap But_Friends_Hold {
+            get {
+                object obj = ResourceManager.GetObject("But_Friends_Hold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap But_Groups {
             get {
                 object obj = ResourceManager.GetObject("But_Groups", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap But_Groups_Hold {
+            get {
+                object obj = ResourceManager.GetObject("But_Groups_Hold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +113,9 @@ namespace Split_Wise_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap But_Hist1 {
+        internal static System.Drawing.Bitmap But_Hist_Hold {
             get {
-                object obj = ResourceManager.GetObject("But_Hist1", resourceCulture);
+                object obj = ResourceManager.GetObject("But_Hist_Hold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +153,9 @@ namespace Split_Wise_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap But_New_Group_Perfil_Image {
+        internal static System.Drawing.Bitmap But_New_Group_Hold {
             get {
-                object obj = ResourceManager.GetObject("But_New_Group_Perfil_Image", resourceCulture);
+                object obj = ResourceManager.GetObject("But_New_Group_Hold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +163,19 @@ namespace Split_Wise_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap But_New_Group1 {
+        internal static System.Drawing.Bitmap But_New_Photo {
             get {
-                object obj = ResourceManager.GetObject("But_New_Group1", resourceCulture);
+                object obj = ResourceManager.GetObject("But_New_Photo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap But_New_Photo_Hold {
+            get {
+                object obj = ResourceManager.GetObject("But_New_Photo_Hold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
