@@ -142,7 +142,7 @@
             textBox7.TabIndex = 14;
             textBox7.Text = "Más Información";
             // 
-            // Form_NewFriends
+            // Form_NewFriend
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -157,8 +157,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
-            Name = "Form_NewFriends";
-            Text = "Form_NewGroup";
+            Name = "Form_NewFriend";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

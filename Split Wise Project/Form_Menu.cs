@@ -20,13 +20,7 @@ namespace Split_Wise_Project
             InitializeComponent();
             Panel_Principal_Ref = Panel_Principal;
         }
-        public void Update()
-        {
-            if (Pulse_Button == 0)
-            {
-                But_Groups.BackColor = Color.Gray;
-            }
-        }
+   
         public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
         {
             //Reb un formulari i busca si el nostre panel ya te el formulari.
@@ -52,16 +46,26 @@ namespace Split_Wise_Project
         private void But_Groups_Click(object sender, EventArgs e)
         {
             Open_Form<Form_Groups>((PictureBox)sender);
+            But_Groups.BackColor = Color.LightGray;
+            But_Friends.BackColor = Color.Transparent;
+            But_Hist.BackColor = Color.Transparent;
+
         }
 
         private void But_Friends_Click(object sender, EventArgs e)
         {
             Open_Form<Form_Friends>((PictureBox)sender);
+            But_Groups.BackColor = Color.Transparent;
+            But_Friends.BackColor = Color.LightGray;
+            But_Hist.BackColor = Color.Transparent;
         }
 
         private void But_Hist_Click(object sender, EventArgs e)
         {
             Open_Form<Form_Hist>((PictureBox)sender);
+            But_Groups.BackColor = Color.Transparent;
+            But_Friends.BackColor = Color.Transparent;
+            But_Hist.BackColor = Color.LightGray;
         }
 
         private void But_Groups_DragEnter(object sender, DragEventArgs e)

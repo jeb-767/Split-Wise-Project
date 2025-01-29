@@ -63,6 +63,26 @@ namespace Split_Wise_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap But_Back {
+            get {
+                object obj = ResourceManager.GetObject("But_Back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap But_Back_Hold {
+            get {
+                object obj = ResourceManager.GetObject("But_Back_Hold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap But_Friends {
             get {
                 object obj = ResourceManager.GetObject("But_Friends", resourceCulture);
@@ -136,6 +156,26 @@ namespace Split_Wise_Project.Properties {
         internal static System.Drawing.Bitmap But_New_Friend_Hold {
             get {
                 object obj = ResourceManager.GetObject("But_New_Friend_Hold", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap But_New_Gast {
+            get {
+                object obj = ResourceManager.GetObject("But_New_Gast", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap But_New_Gast_Hold {
+            get {
+                object obj = ResourceManager.GetObject("But_New_Gast_Hold", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

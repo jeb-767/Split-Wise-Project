@@ -52,7 +52,6 @@
             ClientSize = new Size(320, 314);
             Controls.Add(PB_New_Friend);
             Name = "Form_Friends";
-            Text = "Form_Friends";
             ((System.ComponentModel.ISupportInitialize)PB_New_Friend).EndInit();
             ResumeLayout(false);
         }

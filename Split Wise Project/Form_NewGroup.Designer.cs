@@ -158,7 +158,6 @@
             Controls.Add(TB_NewGroup_Name);
             Controls.Add(textBox1);
             Name = "Form_NewGroup";
-            Text = "Form_NewGroup";
             ((System.ComponentModel.ISupportInitialize)PB_New_Icon).EndInit();
             ((System.ComponentModel.ISupportInitialize)PB_New_Member).EndInit();
             ResumeLayout(false);

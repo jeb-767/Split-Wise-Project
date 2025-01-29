@@ -39,7 +39,7 @@
             // 
             // But_Groups
             // 
-            But_Groups.BackColor = SystemColors.Control;
+            But_Groups.BackColor = Color.Transparent;
             But_Groups.Image = Properties.Resources.But_Groups;
             But_Groups.Location = new Point(12, 371);
             But_Groups.Name = "But_Groups";
@@ -94,7 +94,6 @@
             Controls.Add(But_Friends);
             Controls.Add(But_Groups);
             Name = "Form_Menu";
-            Text = "Form_Menu";
             ((System.ComponentModel.ISupportInitialize)But_Groups).EndInit();
             ((System.ComponentModel.ISupportInitialize)But_Friends).EndInit();
             ((System.ComponentModel.ISupportInitialize)But_Hist).EndInit();

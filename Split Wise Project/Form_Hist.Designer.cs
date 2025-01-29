@@ -33,9 +33,11 @@
             // 
             // listView1
             // 
+            listView1.BackColor = SystemColors.MenuBar;
+            listView1.BorderStyle = BorderStyle.None;
             listView1.Location = new Point(12, 12);
             listView1.Name = "listView1";
-            listView1.Size = new Size(290, 287);
+            listView1.Size = new Size(296, 290);
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -46,7 +48,6 @@
             ClientSize = new Size(320, 314);
             Controls.Add(listView1);
             Name = "Form_Hist";
-            Text = "Form_Hist";
             ResumeLayout(false);
         }
 

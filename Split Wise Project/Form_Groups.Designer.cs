@@ -28,15 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
-            But_New_Group = new PictureBox();
             List_View_Groups = new ListView();
+            PB_OpenListView = new PictureBox();
+            But_New_Group = new PictureBox();
+            PanelGroups = new Panel();
+            ((System.ComponentModel.ISupportInitialize)PB_OpenListView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)But_New_Group).BeginInit();
+            PanelGroups.SuspendLayout();
             SuspendLayout();
+            // 
+            // List_View_Groups
+            // 
+            List_View_Groups.BackColor = SystemColors.Control;
+            List_View_Groups.BorderStyle = BorderStyle.None;
+            List_View_Groups.Location = new Point(0, 0);
+            List_View_Groups.Name = "List_View_Groups";
+            List_View_Groups.Size = new Size(322, 137);
+            List_View_Groups.TabIndex = 1;
+            List_View_Groups.UseCompatibleStateImageBehavior = false;
+            // 
+            // PB_OpenListView
+            // 
+            PB_OpenListView.Image = Properties.Resources.But_Groups;
+            PB_OpenListView.Location = new Point(0, 277);
+            PB_OpenListView.Name = "PB_OpenListView";
+            PB_OpenListView.Size = new Size(57, 22);
+            PB_OpenListView.SizeMode = PictureBoxSizeMode.Zoom;
+            PB_OpenListView.TabIndex = 0;
+            PB_OpenListView.TabStop = false;
+            PB_OpenListView.Click += PB_OpenListView_Click;
             // 
             // But_New_Group
             // 
             But_New_Group.Image = Properties.Resources.But_New_Group;
-            But_New_Group.Location = new Point(255, 265);
+            But_New_Group.Location = new Point(243, 249);
             But_New_Group.Name = "But_New_Group";
             But_New_Group.Size = new Size(65, 50);
             But_New_Group.SizeMode = PictureBoxSizeMode.Zoom;
@@ -46,32 +71,35 @@
             But_New_Group.MouseEnter += But_New_Group_MouseEnter;
             But_New_Group.MouseLeave += But_New_Group_MouseLeave;
             // 
-            // List_View_Groups
+            // PanelGroups
             // 
-            List_View_Groups.BackColor = SystemColors.MenuBar;
-            List_View_Groups.BorderStyle = BorderStyle.None;
-            List_View_Groups.Location = new Point(12, 12);
-            List_View_Groups.Name = "List_View_Groups";
-            List_View_Groups.Size = new Size(296, 247);
-            List_View_Groups.TabIndex = 1;
-            List_View_Groups.UseCompatibleStateImageBehavior = false;
+            PanelGroups.BackColor = SystemColors.Control;
+            PanelGroups.Controls.Add(But_New_Group);
+            PanelGroups.Controls.Add(PB_OpenListView);
+            PanelGroups.Controls.Add(List_View_Groups);
+            PanelGroups.Location = new Point(0, 3);
+            PanelGroups.Name = "PanelGroups";
+            PanelGroups.Size = new Size(319, 299);
+            PanelGroups.TabIndex = 3;
             // 
             // Form_Groups
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
-            Controls.Add(List_View_Groups);
-            Controls.Add(But_New_Group);
+            Controls.Add(PanelGroups);
             Name = "Form_Groups";
-            Text = "Form_Groups";
+            ((System.ComponentModel.ISupportInitialize)PB_OpenListView).EndInit();
             ((System.ComponentModel.ISupportInitialize)But_New_Group).EndInit();
+            PanelGroups.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private PictureBox But_New_Group;
+        private PictureBox pictureBox1;
         private ListView List_View_Groups;
+        private PictureBox PB_OpenListView;
+        private PictureBox But_New_Group;
+        private Panel PanelGroups;
     }
 }
