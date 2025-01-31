@@ -43,14 +43,15 @@
             List_View_Groups.BorderStyle = BorderStyle.None;
             List_View_Groups.Location = new Point(0, 0);
             List_View_Groups.Name = "List_View_Groups";
-            List_View_Groups.Size = new Size(322, 137);
+            List_View_Groups.Size = new Size(316, 243);
             List_View_Groups.TabIndex = 1;
             List_View_Groups.UseCompatibleStateImageBehavior = false;
+            List_View_Groups.View = View.List;
             // 
             // PB_OpenListView
             // 
             PB_OpenListView.Image = Properties.Resources.But_Groups;
-            PB_OpenListView.Location = new Point(0, 277);
+            PB_OpenListView.Location = new Point(0, 259);
             PB_OpenListView.Name = "PB_OpenListView";
             PB_OpenListView.Size = new Size(57, 22);
             PB_OpenListView.SizeMode = PictureBoxSizeMode.Zoom;

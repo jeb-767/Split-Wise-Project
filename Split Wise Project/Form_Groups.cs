@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Split_Wise_Project
 {
@@ -17,9 +18,19 @@ namespace Split_Wise_Project
             InitializeComponent();
             ColumnHeader columna1 = new ColumnHeader();
             List_View_Groups.Columns.Add(columna1);
+            List_View_Groups.Columns[0].Width = 200;
+            ColumnHeader columna2 = new ColumnHeader();
+            List_View_Groups.Columns.Add(columna2);
+            List_View_Groups.Columns[1].Width = 100;
+            ColumnHeader columna3 = new ColumnHeader();
+            List_View_Groups.Columns.Add(columna3);
+            List_View_Groups.Columns[2].Width = 100;
+
             List_View_Groups.View = View.Details;
             List_View_Groups.HeaderStyle = ColumnHeaderStyle.None;
+
         }
+
 
         public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
         {
@@ -58,10 +69,22 @@ namespace Split_Wise_Project
             But_New_Group.Image = Properties.Resources.But_New_Group;
         }
 
-        public void Add_To_List_Groups(string group_name)
+        public void Add_To_List_Groups(string group_name, string group_description)
         {
             ListViewItem item = new ListViewItem(group_name);
-            List_View_Groups.Items.Add(item);
+            ListViewItem item_description = new ListViewItem(group_description);
+
+            List_View_Groups.Items.Add(item);   
+
+            item.SubItems.Add(group_description);
+            item.BackColor = Color.LightBlue;
+            item.ForeColor = Color.DarkBlue;
+            item.Font = new Font("Arial", 10, FontStyle.Bold);
+            foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+            {
+                subItem.BackColor = Color.LightCyan;
+                subItem.ForeColor = Color.DarkCyan;
+            }
         }
 
         private void PB_OpenListView_Click(object sender, EventArgs e)
@@ -69,7 +92,5 @@ namespace Split_Wise_Project
             Open_Form<Group_View>((PictureBox)sender);
             PanelGroups.Visible = true;
         }
-
-       
     }
 }

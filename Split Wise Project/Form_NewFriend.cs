@@ -23,7 +23,7 @@ namespace Split_Wise_Project
 
         private void But_Friends_Create_Click(object sender, EventArgs e)
         {
-            this.Close();
+            
         }
     }
 }

@@ -96,6 +96,7 @@
             PB_New_Icon.SizeMode = PictureBoxSizeMode.Zoom;
             PB_New_Icon.TabIndex = 17;
             PB_New_Icon.TabStop = false;
+            PB_New_Icon.Click += PB_New_Icon_Click;
             PB_New_Icon.MouseEnter += PB_New_Icon_MouseEnter;
             PB_New_Icon.MouseLeave += PB_New_Icon_MouseLeave;
             // 
@@ -131,6 +132,7 @@
             PB_New_Member.SizeMode = PictureBoxSizeMode.Zoom;
             PB_New_Member.TabIndex = 22;
             PB_New_Member.TabStop = false;
+            PB_New_Member.Click += PB_New_Member_Click;
             PB_New_Member.MouseEnter += PB_New_Member_MouseEnter;
             PB_New_Member.MouseLeave += PB_New_Member_MouseLeave;
             // 
