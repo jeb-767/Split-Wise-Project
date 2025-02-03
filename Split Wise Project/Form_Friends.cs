@@ -65,5 +65,23 @@ namespace Split_Wise_Project
         {
             PB_New_Friend.Image = Properties.Resources.But_New_Friend;
         }
+
+        public void Add_To_List_Friends(string group_name, string group_description)
+        {
+            ListViewItem item = new ListViewItem(group_name);
+            ListViewItem item_description = new ListViewItem(group_description);
+
+            List_View_Friends.Items.Add(item);
+
+            item.SubItems.Add(group_description);
+            item.BackColor = Color.LightBlue;
+            item.ForeColor = Color.DarkBlue;
+            item.Font = new Font("Arial", 10, FontStyle.Bold);
+            foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
+            {
+                subItem.BackColor = Color.LightCyan;
+                subItem.ForeColor = Color.DarkCyan;
+            }
+        }
     }
 }

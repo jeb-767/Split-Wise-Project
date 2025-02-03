@@ -23,7 +23,12 @@ namespace Split_Wise_Project
 
         private void But_Friends_Create_Click(object sender, EventArgs e)
         {
-            
+            Form_Friends Amigos = (Form_Friends)Form_Menu.Panel_Principal_Ref.Controls.OfType<Form_Friends>().FirstOrDefault();
+            if (Amigos != null)
+            {
+                Amigos.Add_To_List_Friends(TB_Friends_Name.Text, TB_Friends_Surname.Text);
+            }
+            this.Close();
         }
     }
 }

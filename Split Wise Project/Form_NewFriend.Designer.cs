@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            TB_Friends_Name = new TextBox();
             pictureBox1 = new PictureBox();
-            textBox3 = new TextBox();
+            TB_Friends_Surname = new TextBox();
             button1 = new Button();
             button2 = new Button();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
+            TB_Friends_Description = new TextBox();
+            TB_Friends_Email = new TextBox();
+            TB_Friends_Phone = new TextBox();
+            TB_Friends_Information = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -54,14 +54,14 @@
             textBox1.Text = "Crear Nuevo Contacto";
             textBox1.TextAlign = HorizontalAlignment.Center;
             // 
-            // textBox2
+            // TB_Friends_Name
             // 
-            textBox2.BackColor = SystemColors.MenuBar;
-            textBox2.Location = new Point(118, 42);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(190, 23);
-            textBox2.TabIndex = 1;
-            textBox2.Text = "Nombre";
+            TB_Friends_Name.BackColor = SystemColors.MenuBar;
+            TB_Friends_Name.Location = new Point(118, 42);
+            TB_Friends_Name.Name = "TB_Friends_Name";
+            TB_Friends_Name.Size = new Size(190, 23);
+            TB_Friends_Name.TabIndex = 1;
+            TB_Friends_Name.Text = "Nombre";
             // 
             // pictureBox1
             // 
@@ -73,14 +73,14 @@
             pictureBox1.TabIndex = 2;
             pictureBox1.TabStop = false;
             // 
-            // textBox3
+            // TB_Friends_Surname
             // 
-            textBox3.BackColor = SystemColors.MenuBar;
-            textBox3.Location = new Point(118, 71);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(190, 23);
-            textBox3.TabIndex = 3;
-            textBox3.Text = "Apellidos";
+            TB_Friends_Surname.BackColor = SystemColors.MenuBar;
+            TB_Friends_Surname.Location = new Point(118, 71);
+            TB_Friends_Surname.Name = "TB_Friends_Surname";
+            TB_Friends_Surname.Size = new Size(190, 23);
+            TB_Friends_Surname.TabIndex = 3;
+            TB_Friends_Surname.Text = "Apellidos";
             // 
             // button1
             // 
@@ -106,56 +106,56 @@
             button2.UseVisualStyleBackColor = false;
             button2.Click += But_Friends_Create_Click;
             // 
-            // textBox4
+            // TB_Friends_Description
             // 
-            textBox4.BackColor = SystemColors.MenuBar;
-            textBox4.Location = new Point(12, 100);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(296, 23);
-            textBox4.TabIndex = 11;
-            textBox4.Text = "Descripción";
+            TB_Friends_Description.BackColor = SystemColors.MenuBar;
+            TB_Friends_Description.Location = new Point(12, 100);
+            TB_Friends_Description.Name = "TB_Friends_Description";
+            TB_Friends_Description.Size = new Size(296, 23);
+            TB_Friends_Description.TabIndex = 11;
+            TB_Friends_Description.Text = "Descripción";
             // 
-            // textBox5
+            // TB_Friends_Email
             // 
-            textBox5.BackColor = SystemColors.MenuBar;
-            textBox5.Location = new Point(12, 129);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(296, 23);
-            textBox5.TabIndex = 12;
-            textBox5.Text = "Correo";
+            TB_Friends_Email.BackColor = SystemColors.MenuBar;
+            TB_Friends_Email.Location = new Point(12, 129);
+            TB_Friends_Email.Name = "TB_Friends_Email";
+            TB_Friends_Email.Size = new Size(296, 23);
+            TB_Friends_Email.TabIndex = 12;
+            TB_Friends_Email.Text = "Correo";
             // 
-            // textBox6
+            // TB_Friends_Phone
             // 
-            textBox6.BackColor = SystemColors.MenuBar;
-            textBox6.Location = new Point(12, 158);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(296, 23);
-            textBox6.TabIndex = 13;
-            textBox6.Text = "Telefono";
+            TB_Friends_Phone.BackColor = SystemColors.MenuBar;
+            TB_Friends_Phone.Location = new Point(12, 158);
+            TB_Friends_Phone.Name = "TB_Friends_Phone";
+            TB_Friends_Phone.Size = new Size(296, 23);
+            TB_Friends_Phone.TabIndex = 13;
+            TB_Friends_Phone.Text = "Telefono";
             // 
-            // textBox7
+            // TB_Friends_Information
             // 
-            textBox7.BackColor = SystemColors.MenuBar;
-            textBox7.Location = new Point(12, 187);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(296, 23);
-            textBox7.TabIndex = 14;
-            textBox7.Text = "Más Información";
+            TB_Friends_Information.BackColor = SystemColors.MenuBar;
+            TB_Friends_Information.Location = new Point(12, 187);
+            TB_Friends_Information.Name = "TB_Friends_Information";
+            TB_Friends_Information.Size = new Size(296, 23);
+            TB_Friends_Information.TabIndex = 14;
+            TB_Friends_Information.Text = "Más Información";
             // 
             // Form_NewFriend
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
-            Controls.Add(textBox7);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
+            Controls.Add(TB_Friends_Information);
+            Controls.Add(TB_Friends_Phone);
+            Controls.Add(TB_Friends_Email);
+            Controls.Add(TB_Friends_Description);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(textBox3);
+            Controls.Add(TB_Friends_Surname);
             Controls.Add(pictureBox1);
-            Controls.Add(textBox2);
+            Controls.Add(TB_Friends_Name);
             Controls.Add(textBox1);
             Name = "Form_NewFriend";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -166,14 +166,14 @@
         #endregion
 
         private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox TB_Friends_Name;
         private PictureBox pictureBox1;
-        private TextBox textBox3;
+        private TextBox TB_Friends_Surname;
         private Button button1;
         private Button button2;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private TextBox textBox7;
+        private TextBox TB_Friends_Description;
+        private TextBox TB_Friends_Email;
+        private TextBox TB_Friends_Phone;
+        private TextBox TB_Friends_Information;
     }
 }
