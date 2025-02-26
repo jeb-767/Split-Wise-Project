@@ -19,6 +19,10 @@ namespace Split_Wise_Project
         {
             InitializeComponent();
             Panel_Principal_Ref = Panel_Principal;
+            DataAcces.DataAccess d= new DataAcces.DataAccess();
+            d.getUsuarios();
+            d.GetGrupos();
+            d.GetGastos();
         }
    
         public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
