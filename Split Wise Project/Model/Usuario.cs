@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Split_Wise_Project.DataAcces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,5 +35,13 @@ namespace Split_Wise_Project.Model
             this.Telefono = _Telefono ;
             this.Foto = _Foto ;
         }
+
+        public List<Usuario> GetAmigos()
+        {
+            DataAcces.DataAccess d = new DataAcces.DataAccess();
+            amigos = d.GetAmigos(ID);
+            return amigos;
+        }
+
     }
 }

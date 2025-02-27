@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Split_Wise_Project.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,8 @@ namespace Split_Wise_Project
             InitializeComponent();
             Panel_Principal_Ref = Panel_Principal;
             DataAcces.DataAccess d= new DataAcces.DataAccess();
-            d.getUsuarios();
+            Usuario u= d.getUsuarios()[0];
+            u.GetAmigos();
             d.GetGrupos();
             d.GetGastos();
         }

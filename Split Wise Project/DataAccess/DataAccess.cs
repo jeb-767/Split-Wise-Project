@@ -112,7 +112,7 @@ namespace Split_Wise_Project.DataAcces
             return lista_objetos;
         }
 
-        public List<Usuario> GetAmigos()
+        public List<Usuario> GetAmigos(int ID)
         {
             List<Usuario> Amigos = new List<Usuario>();
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -120,14 +120,22 @@ namespace Split_Wise_Project.DataAcces
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM amigos";
+                    string query = "SELECT * FROM amigos join usuarios on Usuarios_idAmigo = usuarios.idUsuarios where Usuarios_idUsuarios = @id ;";
                     MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@id", ID);
                     MySqlDataReader reader = command.ExecuteReader();
+                    
                     while (reader.Read())
                     {
                         Usuario varObjeto = new Usuario()
                         {
-    
+                            ID = reader.GetInt32("idUsuarios"),
+                            Nombre = reader.GetString("Nombre"),
+                            Apellidos = reader.GetString("Apellidos"),
+                            Descripcion = reader.GetString("Descripcion"),
+                            Correo = reader.GetString("Correo"),
+                            Telefono = reader.GetInt32("Telefono"),
+                            Foto = reader.GetString("Foto")
                         };
                         Amigos.Add(varObjeto);
                     }
