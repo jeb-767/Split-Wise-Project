@@ -21,8 +21,11 @@ namespace Split_Wise_Project
             InitializeComponent();
             Panel_Principal_Ref = Panel_Principal;
             DataAcces.DataAccess d= new DataAcces.DataAccess();
-            Usuario u= d.getUsuarios()[0];
+            Usuario u= d.GetUsuarios()[1];
+            Grupo f = d.GetGrupos()[1];
             u.GetAmigos();
+            f.GetMiembros();
+            f.GetRegistros();
             d.GetGrupos();
             d.GetGastos();
         }

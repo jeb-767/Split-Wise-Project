@@ -9,8 +9,8 @@ namespace Split_Wise_Project.Model
     public class Gasto
     {
         public int ID { get; set; }
-        public int Usuario { get; set; }
-        public int Grupo { get; set; }
+        public int usuario { get; set; }
+        public int grupo { get; set; }
         public float Cantidad { get; set; }
         public string Nombre { get; set; }
         public string Estado { get; set; }
@@ -26,11 +26,12 @@ namespace Split_Wise_Project.Model
             Implicados = new List<Usuario>();
 
             this.ID = _ID;
-            this.Usuario = _Usuario;
-            this.Grupo = _Grupo;
+            this.usuario = _Usuario;
+            this.grupo = _Grupo;
             this.Cantidad = _Cantidad;
             this.Nombre = _Nombre;
             this.Estado = _Estado;
         }
+        
     }
 }
