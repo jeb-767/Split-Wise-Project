@@ -16,7 +16,7 @@ namespace Split_Wise_Project.Model
         public string Correo { get; set; }
         public int Telefono { get; set; }
         public string Foto { get; set; }
-        List<Usuario> amigos { get; set; }
+        public List<Usuario> amigos { get; set; }
 
         public Usuario() 
         {
@@ -43,5 +43,10 @@ namespace Split_Wise_Project.Model
             return amigos;
         }
 
+        public void AddAmigo(string Email)
+        {
+            DataAcces.DataAccess d = new DataAcces.DataAccess();
+            d.AddAmigo(this , Email);
+        }
     }
 }

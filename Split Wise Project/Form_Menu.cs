@@ -1,4 +1,5 @@
-﻿using Split_Wise_Project.Model;
+﻿using Org.BouncyCastle.Crypto.Macs;
+using Split_Wise_Project.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,8 @@ namespace Split_Wise_Project
             DataAcces.DataAccess d= new DataAcces.DataAccess();
             Usuario u= d.GetUsuarios()[1];
             Grupo f = d.GetGrupos()[1];
+            f.AddGasto("eljavi@gmail.com", 50, "Autobus");
+            f.AddRegistro("Hotel");
             u.GetAmigos();
             f.GetMiembros();
             f.GetRegistros();

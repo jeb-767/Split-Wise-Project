@@ -64,7 +64,7 @@ namespace Split_Wise_Project.DataAcces
                         {
                             ID = reader.GetInt32("idGrupos"),
                             Nombre = reader.GetString("Nombre"),
-                            Descripcion = reader.GetString("Descripcion"),                            
+                            Descripcion = reader.GetString("Descripcion"),
                             Foto = reader.GetString("Foto"),
                             Estado = reader.GetString("Estado"),
                         };
@@ -87,7 +87,7 @@ namespace Split_Wise_Project.DataAcces
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM splitwise.usuarios_has_gastos\r\nJOIN splitwise.grupos on Grupos_idGrupos = splitwise.grupos.idGrupos\r\nJOIN splitwise.usuarios on Usuarios_idUsuarios = splitwise.usuarios.idUsuarios; ";
+                    string query = "SELECT * FROM splitwise.usuarios_has_gastos";
                     MySqlCommand command = new MySqlCommand(query, connection);
                     MySqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
@@ -124,7 +124,7 @@ namespace Split_Wise_Project.DataAcces
                     MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.AddWithValue("@id", ID);
                     MySqlDataReader reader = command.ExecuteReader();
-                    
+
                     while (reader.Read())
                     {
                         Usuario varObjeto = new Usuario()
@@ -138,7 +138,7 @@ namespace Split_Wise_Project.DataAcces
                             Foto = reader.GetString("Foto")
                         };
                         Amigos.Add(varObjeto);
-                    }   
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -215,6 +215,182 @@ namespace Split_Wise_Project.DataAcces
                 }
             }
             return Registros;
+        }
+
+        public void AddAmigo(Usuario Original, string Email_Amigo)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query1 = "SELECT * FROM splitwise.usuarios WHERE Correo = @correo;";
+                    string query_insert = "INSERT INTO `splitwise`.`amigos` (`Usuarios_idUsuarios`, `Usuarios_idAmigo`) VALUES (@id, @id_amigo);";
+                    MySqlCommand command = new MySqlCommand(query1, connection);
+                    command.Parameters.AddWithValue("@correo", Email_Amigo);
+                    command.Parameters.AddWithValue("@id", Original.ID);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    Usuario varObjeto = new Usuario();
+                    while (reader.Read())
+                    {
+                        varObjeto = new Usuario()
+                        {
+                            ID = reader.GetInt32("idUsuarios"),
+                            Nombre = reader.GetString("Nombre"),
+                            Apellidos = reader.GetString("Apellidos"),
+                            Descripcion = reader.GetString("Descripcion"),
+                            Correo = reader.GetString("Correo"),
+                            Telefono = reader.GetInt32("Telefono"),
+                            Foto = reader.GetString("Foto")
+                        };
+                    }
+                    if (Original.Nombre != null)
+                    {
+                        reader.Close();
+                        command = new MySqlCommand(query_insert, connection);
+                        command.Parameters.AddWithValue("@id", Original.ID);
+                        command.Parameters.AddWithValue("@id_amigo", varObjeto.ID);
+                        reader = command.ExecuteReader();
+                        Original.amigos.Add(varObjeto);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error fetching objects: " + ex.Message);
+                }
+            }
+        }
+
+        public void AddMiembroGrupo(Grupo Original, string Email_Usuarios)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query1 = "SELECT * FROM splitwise.usuarios WHERE Correo = @email;";
+                    string query_insert = "INSERT INTO `splitwise`.`usuarios_has_grupos` (`Usuarios_idUsuarios`, `Grupos_idGrupos`) VALUES (@id_usuarios, @id_grupo);";
+                    MySqlCommand command = new MySqlCommand(query1, connection);
+                    command.Parameters.AddWithValue("@email", Email_Usuarios);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    Usuario varObjeto = new Usuario();
+                    while (reader.Read())
+                    {
+                        varObjeto = new Usuario()
+                        {
+                            ID = reader.GetInt32("idUsuarios"),
+                            Nombre = reader.GetString("Nombre"),
+                            Apellidos = reader.GetString("Apellidos"),
+                            Descripcion = reader.GetString("Descripcion"),
+                            Correo = reader.GetString("Correo"),
+                            Telefono = reader.GetInt32("Telefono"),
+                            Foto = reader.GetString("Foto")
+                        };
+
+
+                    }
+                    if (Original.Nombre != null)
+                    {
+                        reader.Close();
+                        command = new MySqlCommand(query_insert, connection);
+                        command.Parameters.AddWithValue("@id_grupo", Original.ID);
+                        command.Parameters.AddWithValue("@id_usuarios", varObjeto.ID);
+                        reader = command.ExecuteReader();
+                        Original.Miembros.Add(varObjeto);
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error fetching objects: " + ex.Message);
+                }
+            }
+        }
+
+        public void AddGasto(Grupo Original, string Email_Usuarios ,int cantidad , string nombre)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query_find_user = "SELECT * FROM splitwise.usuarios WHERE Correo = @email;";
+                    string query_insert = "INSERT INTO `splitwise`.`usuarios_has_gastos` (`Usuarios_idUsuarios`, `Grupos_idGrupos`, `Cantidad`, `Nombre`, `Estado`) VALUES (@id_usuarios, @id_grupos, @Cantidad, @Nombre, Pendiente);";
+                    MySqlCommand command = new MySqlCommand(query_find_user, connection);
+                    command.Parameters.AddWithValue("@email", Email_Usuarios);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    Usuario varObjeto = new Usuario();
+                    while (reader.Read())
+                    {
+                        varObjeto = new Usuario()
+                        {
+                            ID = reader.GetInt32("idUsuarios"),
+                            Nombre = reader.GetString("Nombre"),
+                            Apellidos = reader.GetString("Apellidos"),
+                            Descripcion = reader.GetString("Descripcion"),
+                            Correo = reader.GetString("Correo"),
+                            Telefono = reader.GetInt32("Telefono"),
+                            Foto = reader.GetString("Foto")
+                        };
+                        
+                    }
+                    if (Email_Usuarios != null)
+                    {
+                        reader.Close();
+                        command = new MySqlCommand(query_insert, connection);
+                        command.Parameters.AddWithValue("@id_grupo", Original.ID);
+                        command.Parameters.AddWithValue("@id_usuarios", varObjeto.ID);
+                        command.Parameters.AddWithValue("@Cantidad", cantidad);
+                        command.Parameters.AddWithValue("@Nombre", nombre);
+                        reader = command.ExecuteReader();
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error fetching objects: " + ex.Message);
+                }
+            }
+        }
+
+        public void AddRegistros(Grupo Original, string Nombre_Gasto)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query1 = "SELECT * FROM splitwise.usuarios_has_gastos WHERE Nombre = @nombre;";
+                    string query_insert = "INSERT INTO `splitwise`.`usuarios_has_grupos` (`Usuarios_idUsuarios`, `Grupos_idGrupos`) VALUES (@id_usuarios, @id_grupo);";
+                    MySqlCommand command = new MySqlCommand(query1, connection);
+                    command.Parameters.AddWithValue("@nombre", Nombre_Gasto);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    Gasto varObjeto = new Gasto();
+                    while (reader.Read())
+                    {
+                        varObjeto = new Gasto()
+                        {
+                            ID = reader.GetInt32("ID_Gasto"),
+                            usuario = reader.GetInt32("Usuarios_idUsuarios"),
+                            grupo = reader.GetInt32("Grupos_idGrupos"),
+                            Cantidad = reader.GetFloat("Cantidad"),
+                            Nombre = reader.GetString("Nombre"),
+                            Estado = reader.GetString("Estado"),
+                        };
+
+
+                    }
+                    if (Original.Nombre != null)
+                    {
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error fetching objects: " + ex.Message);
+                }
+            }
         }
     }
 }

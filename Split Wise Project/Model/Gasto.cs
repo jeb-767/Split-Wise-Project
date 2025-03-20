@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace Split_Wise_Project.Model
 {
@@ -32,6 +33,7 @@ namespace Split_Wise_Project.Model
             this.Nombre = _Nombre;
             this.Estado = _Estado;
         }
+
         
     }
 }
