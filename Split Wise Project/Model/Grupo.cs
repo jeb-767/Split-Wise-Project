@@ -16,8 +16,6 @@ namespace Split_Wise_Project.Model
         public string Estado { get; set; }
         public List<Usuario> Miembros { get; set; }
         public List<Gasto> gastos { get; set; }
-
-
         List<Registro> Registros { get; set; }
 
         public Grupo()
@@ -66,10 +64,10 @@ namespace Split_Wise_Project.Model
             d.AddGasto(this, Email_Usuarios, cantidad, nombre);
         }
 
-        public void AddRegistro(string Nombre)
+        public void AddRegistro(string Nombre, string Accion)
         {
             DataAcces.DataAccess d = new DataAcces.DataAccess();
-            d.AddRegistros(this, Nombre);
+            d.AddRegistros(this, Nombre, Accion);
         }
 
     }

@@ -202,8 +202,7 @@ namespace Split_Wise_Project.DataAcces
                         Registro varObjeto = new Registro()
                         {
                             ID = reader.GetInt32("ID_Registro"),
-                            usuario = reader.GetInt32("Usuarios_has_Gastos_Usuarios_idUsuarios"),
-                            grupo = reader.GetInt32("Usuarios_has_Gastos_Grupos_idGrupos"),
+                            Gasto = reader.GetInt32("ID_Gasto"),
                             Accion = reader.GetString("Accion")
                         };
                         Registros.Add(varObjeto);
@@ -316,7 +315,7 @@ namespace Split_Wise_Project.DataAcces
                 {
                     connection.Open();
                     string query_find_user = "SELECT * FROM splitwise.usuarios WHERE Correo = @email;";
-                    string query_insert = "INSERT INTO `splitwise`.`usuarios_has_gastos` (`Usuarios_idUsuarios`, `Grupos_idGrupos`, `Cantidad`, `Nombre`, `Estado`) VALUES (@id_usuarios, @id_grupos, @Cantidad, @Nombre, Pendiente);";
+                    string query_insert = "INSERT INTO `splitwise`.`usuarios_has_gastos` (`Usuarios_idUsuarios`, `Grupos_idGrupos`, `Cantidad`, `Nombre`, `Estado`) VALUES (@id_usuarios, @id_grupos, @Cantidad, @Nombre, 'Pendiente');";
                     MySqlCommand command = new MySqlCommand(query_find_user, connection);
                     command.Parameters.AddWithValue("@email", Email_Usuarios);
                     MySqlDataReader reader = command.ExecuteReader();
@@ -339,7 +338,7 @@ namespace Split_Wise_Project.DataAcces
                     {
                         reader.Close();
                         command = new MySqlCommand(query_insert, connection);
-                        command.Parameters.AddWithValue("@id_grupo", Original.ID);
+                        command.Parameters.AddWithValue("@id_grupos", Original.ID);
                         command.Parameters.AddWithValue("@id_usuarios", varObjeto.ID);
                         command.Parameters.AddWithValue("@Cantidad", cantidad);
                         command.Parameters.AddWithValue("@Nombre", nombre);
@@ -354,17 +353,19 @@ namespace Split_Wise_Project.DataAcces
             }
         }
 
-        public void AddRegistros(Grupo Original, string Nombre_Gasto)
+        public void AddRegistros(Grupo Original, string Nombre_Gasto, string Accion)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
                 {
                     connection.Open();
-                    string query1 = "SELECT * FROM splitwise.usuarios_has_gastos WHERE Nombre = @nombre;";
-                    string query_insert = "INSERT INTO `splitwise`.`usuarios_has_grupos` (`Usuarios_idUsuarios`, `Grupos_idGrupos`) VALUES (@id_usuarios, @id_grupo);";
+                    string query1 = "SELECT * FROM splitwise.usuarios_has_gastos WHERE Nombre = @nombre and Grupos_idGrupos = @Group_id ";
+                    string query_insert = "INSERT INTO `splitwise`.`registros` (`Accion`, `ID_Gasto`) VALUES (@accion, @gasto);";
                     MySqlCommand command = new MySqlCommand(query1, connection);
                     command.Parameters.AddWithValue("@nombre", Nombre_Gasto);
+                    command.Parameters.AddWithValue("@Group_id", Original.ID);
+
                     MySqlDataReader reader = command.ExecuteReader();
                     Gasto varObjeto = new Gasto();
                     while (reader.Read())
@@ -379,12 +380,45 @@ namespace Split_Wise_Project.DataAcces
                             Estado = reader.GetString("Estado"),
                         };
 
-
                     }
-                    if (Original.Nombre != null)
+                    if (Nombre_Gasto != null)
                     {
+                        reader.Close();
+                        command = new MySqlCommand(query_insert, connection);
+                        command.Parameters.AddWithValue("@accion", Accion);
+                        command.Parameters.AddWithValue("@gasto", varObjeto.ID);
+                        reader = command.ExecuteReader();
                     }
 
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error fetching objects: " + ex.Message);
+                }
+            }
+        }
+
+        public void CreateGroup(string Nombre_Grupo, string Descripcion_Grupo, Usuario Propietario)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query_insert = "INSERT INTO `splitwise`.`Grupos` (`Nombre`, `Descripcion`) VALUES (@name, @description);";
+                    MySqlCommand command = new MySqlCommand(query_insert, connection);
+                    command.Parameters.AddWithValue("@nombre", Nombre_Grupo);
+                    command.Parameters.AddWithValue("@description", Descripcion_Grupo);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    Grupo varObjeto = new Grupo();
+                    varObjeto = new Grupo()
+                        {
+                        ID = reader.GetInt32("idGrupos"),
+                        Nombre = Nombre_Grupo,
+                        Descripcion = Descripcion_Grupo,
+                        Foto = "No",
+                        Estado = "Activado",
+                    };
                 }
                 catch (Exception ex)
                 {

@@ -10,19 +10,17 @@ namespace Split_Wise_Project.Model
     public class Registro
     {
         public int ID { get; set; }
-        public int usuario { get; set; }
-        public int grupo { get; set; }
+        public int Gasto {  get; set; }
         public string Accion { get; set; }
 
         public Registro()
         {
         }
 
-        public Registro(int _ID, int _usuario , int _grupo , string _Accion)
+        public Registro(int _ID, int _Gasto , string _Accion)
         {
             this.ID = _ID;
-            this.usuario = _usuario;
-            this.grupo = _grupo;
+            this.Gasto = _Gasto;
             this.Accion = _Accion;
         }
 
