@@ -24,13 +24,6 @@ namespace Split_Wise_Project
             DataAcces.DataAccess d= new DataAcces.DataAccess();
             Usuario u= d.GetUsuarios()[1];
             Grupo f = d.GetGrupos()[1];
-            f.AddGasto("eljavi@gmail.com", 50, "Autobus");
-            f.AddRegistro("Hotel" , "Pagado");
-            u.GetAmigos();
-            f.GetMiembros();
-            f.GetRegistros();
-            d.GetGrupos();
-            d.GetGastos();
         }
    
         public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
