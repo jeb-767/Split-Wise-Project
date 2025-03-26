@@ -70,5 +70,16 @@ namespace Split_Wise_Project.Model
             d.AddRegistros(this, Nombre, Accion);
         }
 
+        public void DeleteGasto(string Nombre)
+        {
+            DataAcces.DataAccess d = new DataAcces.DataAccess();
+            d.DeleteGasto(this, Nombre);
+        }
+        public void DeleteGroup(string name)
+        {
+            DataAcces.DataAccess d = new DataAcces.DataAccess();
+            d.DeleteGrupo(name);
+        }
+
     }
 }

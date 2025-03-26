@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using Microsoft.Win32;
 
 namespace Split_Wise_Project.DataAcces
 {
@@ -224,7 +225,7 @@ namespace Split_Wise_Project.DataAcces
                 {
                     connection.Open();
                     string query1 = "SELECT * FROM splitwise.usuarios WHERE Correo = @correo;";
-                    string query_insert = "INSERT INTO `splitwise`.`amigos` (`Usuarios_idUsuarios`, `Usuarios_idAmigo`) VALUES (@id, @id_amigo);";
+                    string query_delete = "DELETE FROM splitwise.amigos where Usuarios_idUsuarios = '1' and Usuarios_idAmigo = '2';";
                     MySqlCommand command = new MySqlCommand(query1, connection);
                     command.Parameters.AddWithValue("@correo", Email_Amigo);
                     command.Parameters.AddWithValue("@id", Original.ID);
@@ -477,28 +478,105 @@ namespace Split_Wise_Project.DataAcces
                 try
                 {
                     connection.Open();
-                    string query_delete = "UPDATE splitwise.usuarios_has_gastos SET Estado = \"Anulado\" where  ID_Gasto = '1'";
-                    MySqlCommand command = new MySqlCommand(query_insert, connection);
-                    command.Parameters.AddWithValue("@name", Nombre);
-                    command.Parameters.AddWithValue("@surname", Apellidos);
-                    command.Parameters.AddWithValue("@description", Descripcion);
-                    command.Parameters.AddWithValue("@email", Correo);
-                    command.Parameters.AddWithValue("@phone", Telefono);
-                    command.ExecuteNonQuery();
-                    Usuario varObjeto = new Usuario();
-                    varObjeto = new Usuario()
+                    string query1 = "SELECT * FROM splitwise.usuarios_has_gastos WHERE Nombre = @name and Grupos_idGrupos = @id_grupo ;";
+                    string query_delete = "UPDATE splitwise.usuarios_has_gastos SET Estado = \"Anulado\" where  ID_Gasto = @id";
+                    MySqlCommand command = new MySqlCommand(query1, connection);
+                    command.Parameters.AddWithValue("@name", Nombre_Gasto);
+                    command.Parameters.AddWithValue("@id_grupo", Original.ID);                    
+                    MySqlDataReader reader = command.ExecuteReader();
+                    Gasto varObjeto = new Gasto();
+                    while (reader.Read())
                     {
-                        ID = 0,
-                        Nombre = Nombre,
-                        Apellidos = Apellidos,
-                        Descripcion = Descripcion,
-                        Correo = Correo,
-                        Telefono = Telefono,
-                        Foto = "No",
-                    };
+                        varObjeto = new Gasto()
+                        {
+                            ID = reader.GetInt32("ID_Gasto"),
+                            usuario = reader.GetInt32("Usuarios_idUsuarios"),
+                            grupo = reader.GetInt32("Grupos_idGrupos"),
+                            Cantidad = reader.GetFloat("Cantidad"),
+                            Nombre = reader.GetString("Nombre"),
+                            Estado = reader.GetString("Estado"),
+                        };
+                    }
+                    reader.Close();
+                    varObjeto.Estado = "Anulado";
+                    command = new MySqlCommand(query_delete, connection);
+                    command.Parameters.AddWithValue("@id", varObjeto.ID);
+                    command.ExecuteReader();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error fetching objects: " + ex.Message);
+                }
 
-                    var id = command.LastInsertedId;
-                    varObjeto.ID = (int)id;
+            }
+        }
+
+        public void DeleteGrupo(string Nombre_Grupo)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query1 = "SELECT * FROM splitwise.grupos WHERE Nombre = @name;";
+                    string query_delete = "UPDATE splitwise.grupos SET Estado = \"Anular\" where Nombre = @name";
+                    MySqlCommand command = new MySqlCommand(query1, connection);
+                    command.Parameters.AddWithValue("@name", Nombre_Grupo);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    Grupo varObjeto = new Grupo();
+                    while (reader.Read())
+                    {
+                        varObjeto = new Grupo()
+                        {
+                            ID = reader.GetInt32("idGrupos"),
+                            Nombre = reader.GetString("Nombre"),
+                            Descripcion = reader.GetString("Descripcion"),
+                            Foto = reader.GetString("Foto"),
+                            Estado = reader.GetString("Estado"),
+                        };
+                    }
+                    reader.Close();
+                    varObjeto.Estado = "Anular";
+                    command = new MySqlCommand(query_delete, connection);
+                    command.Parameters.AddWithValue("@name", Nombre_Grupo);
+                    command.ExecuteReader();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error fetching objects: " + ex.Message);
+                }
+
+            }
+        }
+        public void DeleteFriend(string Correo_Amigo , Usuario Original)
+        {
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query1 = "SELECT * FROM splitwise.grupos WHERE Nombre = @name;";
+                    string query_delete = "UPDATE splitwise.grupos SET Estado = \"Anular\" where Nombre = @name";
+                    MySqlCommand command = new MySqlCommand(query1, connection);
+                    command.Parameters.AddWithValue("@name", Nombre_Grupo);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    Grupo varObjeto = new Grupo();
+                    while (reader.Read())
+                    {
+                        varObjeto = new Grupo()
+                        {
+                            ID = reader.GetInt32("idGrupos"),
+                            Nombre = reader.GetString("Nombre"),
+                            Descripcion = reader.GetString("Descripcion"),
+                            Foto = reader.GetString("Foto"),
+                            Estado = reader.GetString("Estado"),
+                        };
+                    }
+                    reader.Close();
+                    varObjeto.Estado = "Anular";
+                    command = new MySqlCommand(query_delete, connection);
+                    command.Parameters.AddWithValue("@name", Nombre_Grupo);
+                    command.ExecuteReader();
                 }
                 catch (Exception ex)
                 {
