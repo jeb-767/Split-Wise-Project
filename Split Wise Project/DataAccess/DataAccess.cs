@@ -225,7 +225,7 @@ namespace Split_Wise_Project.DataAcces
                 {
                     connection.Open();
                     string query1 = "SELECT * FROM splitwise.usuarios WHERE Correo = @correo;";
-                    string query_delete = "DELETE FROM splitwise.amigos where Usuarios_idUsuarios = '1' and Usuarios_idAmigo = '2';";
+                    string query_insert = "INSERT INTO `splitwise`.`amigos` (`Usuarios_idUsuarios`, `Usuarios_idAmigo`) VALUES (@id, @id_amigo);";
                     MySqlCommand command = new MySqlCommand(query1, connection);
                     command.Parameters.AddWithValue("@correo", Email_Amigo);
                     command.Parameters.AddWithValue("@id", Original.ID);
@@ -555,28 +555,31 @@ namespace Split_Wise_Project.DataAcces
                 try
                 {
                     connection.Open();
-                    string query1 = "SELECT * FROM splitwise.grupos WHERE Nombre = @name;";
-                    string query_delete = "UPDATE splitwise.grupos SET Estado = \"Anular\" where Nombre = @name";
+                    string query1 = "SELECT * FROM splitwise.usuarios WHERE Correo = @correo;";
+                    string query_delete = "DELETE FROM splitwise.amigos where Usuarios_idUsuarios = @ID_original and Usuarios_idAmigo = @ID_amigo;";
                     MySqlCommand command = new MySqlCommand(query1, connection);
-                    command.Parameters.AddWithValue("@name", Nombre_Grupo);
+                    command.Parameters.AddWithValue("@correo", Correo_Amigo);
                     MySqlDataReader reader = command.ExecuteReader();
-                    Grupo varObjeto = new Grupo();
+                    Usuario varObjeto = new Usuario();
                     while (reader.Read())
                     {
-                        varObjeto = new Grupo()
+                        varObjeto = new Usuario()
                         {
-                            ID = reader.GetInt32("idGrupos"),
+                            ID = reader.GetInt32("idUsuarios"),
                             Nombre = reader.GetString("Nombre"),
+                            Apellidos = reader.GetString("Apellidos"),
                             Descripcion = reader.GetString("Descripcion"),
-                            Foto = reader.GetString("Foto"),
-                            Estado = reader.GetString("Estado"),
+                            Correo = reader.GetString("Correo"),
+                            Telefono = reader.GetInt32("Telefono"),
+                            Foto = reader.GetString("Foto")
                         };
                     }
                     reader.Close();
-                    varObjeto.Estado = "Anular";
                     command = new MySqlCommand(query_delete, connection);
-                    command.Parameters.AddWithValue("@name", Nombre_Grupo);
+                    command.Parameters.AddWithValue("@ID_original", Original.ID);
+                    command.Parameters.AddWithValue("@ID_amigo", varObjeto.ID);
                     command.ExecuteReader();
+                    Original.amigos.Remove(varObjeto);
                 }
                 catch (Exception ex)
                 {

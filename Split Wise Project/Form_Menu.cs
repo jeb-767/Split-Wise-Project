@@ -17,14 +17,13 @@ namespace Split_Wise_Project
     {
         public int Pulse_Button = 0;
         public static Panel Panel_Principal_Ref;
+        public static Usuario Loged_User = new Usuario();
         public Form_Menu()
         {
             InitializeComponent();
             Panel_Principal_Ref = Panel_Principal;
             DataAcces.DataAccess d= new DataAcces.DataAccess();
-            Usuario u= d.GetUsuarios()[1];
-            Grupo f = d.GetGrupos()[1];
-            f.DeleteGroup("Paella");
+            Loged_User = d.GetUsuarios()[0];   
         }
    
         public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()

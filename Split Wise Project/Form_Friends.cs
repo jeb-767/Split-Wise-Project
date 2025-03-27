@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Split_Wise_Project.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,18 +16,23 @@ namespace Split_Wise_Project
         public Form_Friends()
         {
             InitializeComponent();
-            ColumnHeader columna1 = new ColumnHeader();
-            List_View_Friends.Columns.Add(columna1);
+            Form_Menu.Loged_User.GetAmigos();
+            ColumnHeader columna_name = new ColumnHeader();
+            List_View_Friends.Columns.Add(columna_name);
             List_View_Friends.Columns[0].Width = 200;
             ColumnHeader columna2 = new ColumnHeader();
             List_View_Friends.Columns.Add(columna2);
             List_View_Friends.Columns[1].Width = 100;
-            ColumnHeader columna3 = new ColumnHeader();
-            List_View_Friends.Columns.Add(columna3);
-            List_View_Friends.Columns[2].Width = 100;
+            
+            
 
             List_View_Friends.View = View.Details;
             List_View_Friends.HeaderStyle = ColumnHeaderStyle.None;
+
+            foreach (Usuario amigo in Form_Menu.Loged_User.amigos)
+            {
+                Add_To_List_Friends(amigo.Nombre, amigo.Apellidos);
+            }
         }
         public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
         {
@@ -66,14 +72,14 @@ namespace Split_Wise_Project
             PB_New_Friend.Image = Properties.Resources.But_New_Friend;
         }
 
-        public void Add_To_List_Friends(string group_name, string group_description)
+        public void Add_To_List_Friends(string nombre, string apellidos)
         {
-            ListViewItem item = new ListViewItem(group_name);
-            ListViewItem item_description = new ListViewItem(group_description);
+            ListViewItem item = new ListViewItem(nombre);
+            ListViewItem item_description = new ListViewItem(apellidos);
 
             List_View_Friends.Items.Add(item);
 
-            item.SubItems.Add(group_description);
+            item.SubItems.Add(apellidos);
             item.BackColor = Color.LightBlue;
             item.ForeColor = Color.DarkBlue;
             item.Font = new Font("Arial", 10, FontStyle.Bold);

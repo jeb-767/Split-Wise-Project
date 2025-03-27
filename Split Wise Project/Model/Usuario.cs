@@ -48,5 +48,11 @@ namespace Split_Wise_Project.Model
             DataAcces.DataAccess d = new DataAcces.DataAccess();
             d.AddAmigo(this , Email);
         }
+
+        public void DeleteFriend(string Email)
+        {
+            DataAcces.DataAccess d = new DataAcces.DataAccess();
+            d.DeleteFriend(Email  , this);
+        }
     }
 }
