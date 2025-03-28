@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             PB_New_Friend = new PictureBox();
-            List_View_Friends = new ListView();
             Panel_Friends = new Panel();
             ((System.ComponentModel.ISupportInitialize)PB_New_Friend).BeginInit();
             SuspendLayout();
@@ -47,27 +46,19 @@
             PB_New_Friend.MouseEnter += pictureBox1_MouseEnter;
             PB_New_Friend.MouseLeave += PB_New_Friend_MouseLeave;
             // 
-            // List_View_Friends
-            // 
-            List_View_Friends.Location = new Point(2, 5);
-            List_View_Friends.Name = "List_View_Friends";
-            List_View_Friends.Size = new Size(318, 254);
-            List_View_Friends.TabIndex = 2;
-            List_View_Friends.UseCompatibleStateImageBehavior = false;
-            // 
             // Panel_Friends
             // 
             Panel_Friends.Location = new Point(2, 5);
             Panel_Friends.Name = "Panel_Friends";
             Panel_Friends.Size = new Size(318, 310);
             Panel_Friends.TabIndex = 3;
+            Panel_Friends.Visible = false;
             // 
             // Form_Friends
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
-            Controls.Add(List_View_Friends);
             Controls.Add(PB_New_Friend);
             Controls.Add(Panel_Friends);
             Name = "Form_Friends";
@@ -78,7 +69,6 @@
         #endregion
 
         private PictureBox PB_New_Friend;
-        private ListView List_View_Friends;
-        private Panel Panel_Friends;
+        public Panel Panel_Friends;
     }
 }

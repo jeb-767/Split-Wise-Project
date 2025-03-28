@@ -23,7 +23,8 @@ namespace Split_Wise_Project
             InitializeComponent();
             Panel_Principal_Ref = Panel_Principal;
             DataAcces.DataAccess d= new DataAcces.DataAccess();
-            Loged_User = d.GetUsuarios()[0];   
+            Loged_User = d.GetUsuarios()[0];
+            Loged_User.GetAmigos();
         }
    
         public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()

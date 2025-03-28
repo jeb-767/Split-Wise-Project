@@ -14,6 +14,7 @@ namespace Split_Wise_Project.DataAcces
     public class DataAccess
     {
         private string connectionString = "Server=localhost;Database=splitwise;User ID=root;";
+
         public List<Usuario> GetUsuarios()
         {
             List<Usuario> lista_objetos = new List<Usuario>();
@@ -548,6 +549,7 @@ namespace Split_Wise_Project.DataAcces
 
             }
         }
+
         public void DeleteFriend(string Correo_Amigo , Usuario Original)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
