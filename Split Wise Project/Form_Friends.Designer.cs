@@ -30,13 +30,15 @@
         {
             PB_New_Friend = new PictureBox();
             Panel_Friends = new Panel();
+            But_Delete_Friend = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)PB_New_Friend).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)But_Delete_Friend).BeginInit();
             SuspendLayout();
             // 
             // PB_New_Friend
             // 
             PB_New_Friend.Image = Properties.Resources.But_New_Friend;
-            PB_New_Friend.Location = new Point(255, 265);
+            PB_New_Friend.Location = new Point(255, 263);
             PB_New_Friend.Name = "PB_New_Friend";
             PB_New_Friend.Size = new Size(65, 50);
             PB_New_Friend.SizeMode = PictureBoxSizeMode.Zoom;
@@ -48,21 +50,34 @@
             // 
             // Panel_Friends
             // 
-            Panel_Friends.Location = new Point(2, 5);
+            Panel_Friends.Location = new Point(2, 2);
             Panel_Friends.Name = "Panel_Friends";
-            Panel_Friends.Size = new Size(318, 310);
+            Panel_Friends.Size = new Size(318, 10);
             Panel_Friends.TabIndex = 3;
             Panel_Friends.Visible = false;
+            // 
+            // But_Delete_Friend
+            // 
+            But_Delete_Friend.Image = Properties.Resources.But_Delete_Friend;
+            But_Delete_Friend.Location = new Point(2, 263);
+            But_Delete_Friend.Name = "But_Delete_Friend";
+            But_Delete_Friend.Size = new Size(65, 50);
+            But_Delete_Friend.SizeMode = PictureBoxSizeMode.Zoom;
+            But_Delete_Friend.TabIndex = 2;
+            But_Delete_Friend.TabStop = false;
+            But_Delete_Friend.Click += But_Delete_Friend_Click;
             // 
             // Form_Friends
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
-            Controls.Add(PB_New_Friend);
+            Controls.Add(But_Delete_Friend);
             Controls.Add(Panel_Friends);
+            Controls.Add(PB_New_Friend);
             Name = "Form_Friends";
             ((System.ComponentModel.ISupportInitialize)PB_New_Friend).EndInit();
+            ((System.ComponentModel.ISupportInitialize)But_Delete_Friend).EndInit();
             ResumeLayout(false);
         }
 
@@ -70,5 +85,6 @@
 
         private PictureBox PB_New_Friend;
         public Panel Panel_Friends;
+        private PictureBox But_Delete_Friend;
     }
 }

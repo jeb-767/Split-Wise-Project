@@ -8,36 +8,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Split_Wise_Project
 {
     public partial class Form_Friends : Form
     {
+        public static StyledListView listView;
         public Form_Friends()
         {
             InitializeComponent();
 
             Usuario usuario = new Usuario();
-
             usuario = Form_Menu.Loged_User;
 
-            Console.WriteLine(usuario.amigos);
-
-            var listView = new StyledListView();
+            listView = new StyledListView();
             listView.Size = new Size(330, 254);
             listView.Location = new Point(0, 0);
-
-            // Agregar datos de ejemplo
-            listView.Items.Add(new ListViewItem(new[] { "Juan", "Pérez García" }));
-            listView.Items.Add(new ListViewItem(new[] { "María", "López Fernández" }));
-            listView.Items.Add(new ListViewItem(new[] { "Carlos", "Gómez Martínez" }));
 
             this.Controls.Add(listView);
 
             foreach (Usuario amigo in usuario.amigos)
             {
-                listView.Items.Add(new ListViewItem(new[] { amigo.Nombre , amigo.Apellidos }));
+                listView.Items.Add(new ListViewItem(new[] { amigo.Nombre, amigo.Apellidos }));
             }
+            
+
         }
         public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
         {
@@ -79,20 +75,14 @@ namespace Split_Wise_Project
 
         public void Add_To_List_Friends(string nombre, string apellidos)
         {
-            ListViewItem item = new ListViewItem(nombre);
-            ListViewItem item_description = new ListViewItem(apellidos);
 
-            
+            listView.Items.Add(new ListViewItem(new[] { nombre, apellidos }));
+        }
 
-            item.SubItems.Add(apellidos);
-            item.BackColor = Color.Transparent;
-            item.ForeColor = Color.Black;
-            item.Font = new Font("Arial", 12, FontStyle.Bold);
-            foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
-            {
-                subItem.BackColor = Color.Transparent;
-                subItem.ForeColor = Color.Black;
-            }
+        private void But_Delete_Friend_Click(object sender, EventArgs e)
+        {
+            listView.Items[0].Remove();
+          
         }
     }
 }

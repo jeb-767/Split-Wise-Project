@@ -8,13 +8,14 @@ public class StyledListView : ListView
         // Configurar propiedades básicas
         this.View = View.Details;
         this.FullRowSelect = true;
+        this.HideSelection = false;
         this.GridLines = false;
         this.BorderStyle = BorderStyle.None;
         this.BackColor = Color.White;
         this.ForeColor = Color.Black;
         this.Font = new Font("Segoe UI", 10);
         this.OwnerDraw = true;
-        this.DoubleBuffering(true);
+        
 
         // Configurar columnas
         this.Columns.Add("Nombre", 150);
@@ -24,39 +25,89 @@ public class StyledListView : ListView
         this.HeaderStyle = ColumnHeaderStyle.Nonclickable;
 
         // Eventos de dibujo
-        this.DrawColumnHeader += ListView_DrawColumnHeader;
+        
         this.DrawItem += ListView_DrawItem;
         this.DrawSubItem += ListView_DrawSubItem;
+
     }
 
-    private void ListView_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+    protected override void OnKeyDown(KeyEventArgs e)
     {
-        // Dibujar encabezado con fondo negro y texto blanco
-        e.Graphics.FillRectangle(Brushes.Black, e.Bounds);
-        e.Graphics.DrawString(e.Header.Text, this.Font, Brushes.White, e.Bounds.Left + 5, e.Bounds.Top + 3);
+        base.OnKeyDown(e);
+        // Permitir selección múltiple con Ctrl y rangos con Shift
+        if (e.Control && e.KeyCode == Keys.A)
+        {
+            foreach (ListViewItem item in Items)
+            {
+                item.Selected = true;
+            }
+        }
     }
 
+    // Modificar el método de dibujo de items para incluir selección
     private void ListView_DrawItem(object sender, DrawListViewItemEventArgs e)
     {
-        // Fondo alternado para las filas
-        var bgColor = e.ItemIndex % 2 == 0 ? Color.White : Color.LightGray;
+        // Determinar colores según estado
+        Color bgColor, textColor;
+
+        if (e.Item.Selected)
+        {
+            bgColor = Color.FromArgb(40, 40, 40); // Gris oscuro para selección
+            textColor = Color.White;
+        }
+        else
+        {
+            bgColor = e.ItemIndex % 2 == 0 ? Color.White : Color.LightGray;
+            textColor = Color.Black;
+        }
+
+        // Dibujar fondo
         e.Graphics.FillRectangle(new SolidBrush(bgColor), e.Bounds);
 
+        // Dibujar texto del primer ítem
+        TextRenderer.DrawText(e.Graphics, e.Item.Text, this.Font,
+            new Rectangle(e.Bounds.Left + 5, e.Bounds.Top, e.Bounds.Width, e.Bounds.Height),
+            textColor,
+            TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
+
         // Dibujar borde inferior
-        e.Graphics.DrawRectangle(Pens.Black, new Rectangle(e.Bounds.Left, e.Bounds.Bottom - 1, e.Bounds.Width, 1));
+        e.Graphics.DrawLine(Pens.Black,
+            e.Bounds.Left, e.Bounds.Bottom - 1,
+            e.Bounds.Right, e.Bounds.Bottom - 1);
     }
 
+    // Modificar el dibujo de subitems para selección
     private void ListView_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
     {
-        // Dibujar texto de subitems
-        TextRenderer.DrawText(e.Graphics, e.SubItem.Text, this.Font, e.Bounds, Color.Black, TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
+        Color textColor = e.Item.Selected ? Color.White : Color.Black;
+
+        TextRenderer.DrawText(e.Graphics, e.SubItem.Text, this.Font, e.Bounds,
+            textColor, TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
     }
 
-    // Método para habilitar Double Buffering
-    private void DoubleBuffering(bool enable)
+    // Nuevo método para selección programática
+    public void SelectItems(params int[] indices)
     {
-        typeof(Control).GetProperty("DoubleBuffered",
-            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
-            .SetValue(this, enable, null);
+        BeginUpdate();
+        try
+        {
+            foreach (int index in indices)
+            {
+                if (index >= 0 && index < Items.Count)
+                {
+                    Items[index].Selected = true;
+                }
+            }
+        }
+        finally
+        {
+            EndUpdate();
+        }
+    }
+
+    // Nuevo método para deseleccionar todo
+    public void ClearSelection()
+    {
+        SelectedItems.Clear();
     }
 }
