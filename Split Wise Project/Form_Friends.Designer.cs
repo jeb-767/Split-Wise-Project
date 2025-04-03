@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             PB_New_Friend = new PictureBox();
-            Panel_Friends = new Panel();
             But_Delete_Friend = new PictureBox();
+            dataGridView1 = new DataGridView();
+            Panel_Friends = new Panel();
             ((System.ComponentModel.ISupportInitialize)PB_New_Friend).BeginInit();
             ((System.ComponentModel.ISupportInitialize)But_Delete_Friend).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // PB_New_Friend
@@ -48,6 +50,25 @@
             PB_New_Friend.MouseEnter += pictureBox1_MouseEnter;
             PB_New_Friend.MouseLeave += PB_New_Friend_MouseLeave;
             // 
+            // But_Delete_Friend
+            // 
+            But_Delete_Friend.Image = Properties.Resources.But_Delete_Friend;
+            But_Delete_Friend.Location = new Point(184, 263);
+            But_Delete_Friend.Name = "But_Delete_Friend";
+            But_Delete_Friend.Size = new Size(65, 50);
+            But_Delete_Friend.SizeMode = PictureBoxSizeMode.Zoom;
+            But_Delete_Friend.TabIndex = 2;
+            But_Delete_Friend.TabStop = false;
+            But_Delete_Friend.Click += But_Delete_Friend_Click;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(5, 17);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(303, 77);
+            dataGridView1.TabIndex = 4;
+            // 
             // Panel_Friends
             // 
             Panel_Friends.Location = new Point(2, 2);
@@ -56,35 +77,27 @@
             Panel_Friends.TabIndex = 3;
             Panel_Friends.Visible = false;
             // 
-            // But_Delete_Friend
-            // 
-            But_Delete_Friend.Image = Properties.Resources.But_Delete_Friend;
-            But_Delete_Friend.Location = new Point(2, 263);
-            But_Delete_Friend.Name = "But_Delete_Friend";
-            But_Delete_Friend.Size = new Size(65, 50);
-            But_Delete_Friend.SizeMode = PictureBoxSizeMode.Zoom;
-            But_Delete_Friend.TabIndex = 2;
-            But_Delete_Friend.TabStop = false;
-            But_Delete_Friend.Click += But_Delete_Friend_Click;
-            // 
             // Form_Friends
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
             Controls.Add(But_Delete_Friend);
-            Controls.Add(Panel_Friends);
             Controls.Add(PB_New_Friend);
+            Controls.Add(Panel_Friends);
+            Controls.Add(dataGridView1);
             Name = "Form_Friends";
             ((System.ComponentModel.ISupportInitialize)PB_New_Friend).EndInit();
             ((System.ComponentModel.ISupportInitialize)But_Delete_Friend).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private PictureBox PB_New_Friend;
-        public Panel Panel_Friends;
         private PictureBox But_Delete_Friend;
+        private DataGridView dataGridView1;
+        public Panel Panel_Friends;
     }
 }

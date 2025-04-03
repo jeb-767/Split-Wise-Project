@@ -218,8 +218,10 @@ namespace Split_Wise_Project.DataAcces
             return Registros;
         }
 
-        public void AddAmigo(Usuario Original, string Email_Amigo)
+        public Usuario AddAmigo(Usuario Original, string Email_Amigo)
         {
+            Usuario varObjeto = new Usuario();
+
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 try
@@ -231,7 +233,6 @@ namespace Split_Wise_Project.DataAcces
                     command.Parameters.AddWithValue("@correo", Email_Amigo);
                     command.Parameters.AddWithValue("@id", Original.ID);
                     MySqlDataReader reader = command.ExecuteReader();
-                    Usuario varObjeto = new Usuario();
                     while (reader.Read())
                     {
                         varObjeto = new Usuario()
@@ -260,6 +261,15 @@ namespace Split_Wise_Project.DataAcces
                 {
                     Console.WriteLine("Error fetching objects: " + ex.Message);
                 }
+
+            }
+            if (varObjeto.Nombre == null)
+            {
+                return null;
+            }
+            else
+            {
+                return varObjeto;
             }
         }
 

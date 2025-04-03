@@ -22,20 +22,63 @@ namespace Split_Wise_Project
             Usuario usuario = new Usuario();
             usuario = Form_Menu.Loged_User;
 
-            listView = new StyledListView();
-            listView.Size = new Size(330, 254);
-            listView.Location = new Point(0, 0);
-
-            this.Controls.Add(listView);
+            ConfigureDataGridView();
 
             foreach (Usuario amigo in usuario.amigos)
             {
-                listView.Items.Add(new ListViewItem(new[] { amigo.Nombre, amigo.Apellidos }));
+                Add_Friend(amigo.Nombre, amigo.Apellidos);
             }
-            
-
         }
-        public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
+
+        private void ConfigureDataGridView()
+        {
+            // Configuración básica del DataGridView
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.FixedSingle;
+            dataGridView1.GridColor = Color.FromArgb(240, 240, 240);
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Black;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Eliminar fila vacía al final
+            dataGridView1.AllowUserToAddRows = false;
+
+            // Configurar columnas
+            dataGridView1.Columns.Add("Nombre", "Nombre");
+            dataGridView1.Columns.Add("Apellidos", "Apellidos");
+
+            // Estilo de encabezados de columna
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            dataGridView1.ColumnHeadersHeight = 30;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Orange;
+            dataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = Color.Orange;
+
+            // Estilo de filas
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.DefaultCellStyle.BackColor = Color.White;
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+            dataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.RowTemplate.Height = 25;
+
+            // Ajuste de columnas
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.DefaultCellStyle.Padding = new Padding(5);
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+        }
+    
+
+    public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
         {
             //Reb un formulari i busca si el nostre panel ya te el formulari.
             //Si ya el te el mostra i si no el te el creara i el mostrara.
@@ -73,16 +116,17 @@ namespace Split_Wise_Project
             PB_New_Friend.Image = Properties.Resources.But_New_Friend;
         }
 
-        public void Add_To_List_Friends(string nombre, string apellidos)
-        {
-
-            listView.Items.Add(new ListViewItem(new[] { nombre, apellidos }));
-        }
-
         private void But_Delete_Friend_Click(object sender, EventArgs e)
         {
-            listView.Items[0].Remove();
-          
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                dataGridView1.Rows.RemoveAt(row.Index);
+            }
+        }
+
+        public void Add_Friend(string nombre , string apellidos)
+        {
+            dataGridView1.Rows.Add(nombre, apellidos);
         }
     }
 }

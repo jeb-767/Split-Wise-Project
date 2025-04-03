@@ -25,17 +25,22 @@ namespace Split_Wise_Project
 
         private void But_Friends_Create_Click(object sender, EventArgs e)
         {
-        
-            StyledListView list = new StyledListView();
-            list = Form_Friends.listView;
-
             Usuario usuario = new Usuario();
             usuario = Form_Menu.Loged_User;
 
-            usuario.AddAmigo(TB_Friends_Email.Text);
+            Usuario nuevoAmigo = usuario.AddAmigo(TB_Friends_Email.Text);
             int index = usuario.amigos.Count();
-            list.Items.Add(new ListViewItem(new[] { usuario.amigos[index - 1].Nombre , usuario.amigos[index - 1].Apellidos}));
+            
 
+            Form_Friends d = new Form_Friends();
+            if(nuevoAmigo !=  null)
+            {
+                d.Add_Friend(nuevoAmigo.Nombre, nuevoAmigo.Apellidos);
+            }
+            else
+            {
+                MessageBox.Show("Error", "Error Title", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
             
             this.Close();
         }

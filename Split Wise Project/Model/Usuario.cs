@@ -43,10 +43,10 @@ namespace Split_Wise_Project.Model
             return amigos;
         }
 
-        public void AddAmigo(string Email)
+        public Usuario AddAmigo(string Email)
         {
             DataAcces.DataAccess d = new DataAcces.DataAccess();
-            d.AddAmigo(this , Email);
+            return d.AddAmigo(this , Email);
         }
 
         public void DeleteFriend(string Email)
