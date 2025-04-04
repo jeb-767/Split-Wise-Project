@@ -53,7 +53,7 @@
             // But_Delete_Friend
             // 
             But_Delete_Friend.Image = Properties.Resources.But_Delete_Friend;
-            But_Delete_Friend.Location = new Point(184, 263);
+            But_Delete_Friend.Location = new Point(5, 263);
             But_Delete_Friend.Name = "But_Delete_Friend";
             But_Delete_Friend.Size = new Size(65, 50);
             But_Delete_Friend.SizeMode = PictureBoxSizeMode.Zoom;

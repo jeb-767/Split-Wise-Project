@@ -93,6 +93,16 @@ namespace Split_Wise_Project.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap But_Delete_Group {
+            get {
+                object obj = ResourceManager.GetObject("But_Delete_Group", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap But_Friends {
             get {
                 object obj = ResourceManager.GetObject("But_Friends", resourceCulture);

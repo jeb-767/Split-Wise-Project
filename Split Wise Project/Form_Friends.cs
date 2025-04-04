@@ -8,25 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Split_Wise_Project
 {
     public partial class Form_Friends : Form
     {
-        public static StyledListView listView;
+        
+        public Usuario usuario = new Usuario();
+       
         public Form_Friends()
         {
             InitializeComponent();
 
-            Usuario usuario = new Usuario();
             usuario = Form_Menu.Loged_User;
 
             ConfigureDataGridView();
 
             foreach (Usuario amigo in usuario.amigos)
             {
-                Add_Friend(amigo.Nombre, amigo.Apellidos);
+                dataGridView1.Rows.Add(amigo.Nombre, amigo.Apellidos);
             }
         }
 
@@ -120,6 +122,7 @@ namespace Split_Wise_Project
         {
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
+                usuario.DeleteFriend(usuario.amigos[row.Index].Correo);
                 dataGridView1.Rows.RemoveAt(row.Index);
             }
         }

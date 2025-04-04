@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Split_Wise_Project.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,22 +14,27 @@ namespace Split_Wise_Project
 {
     public partial class Form_Groups : Form
     {
+        public Usuario usuario = new Usuario();
+        DataAcces.DataAccess d = new DataAcces.DataAccess();
         public Form_Groups()
         {
             InitializeComponent();
-            ColumnHeader columna1 = new ColumnHeader();
-            List_View_Groups.Columns.Add(columna1);
-            List_View_Groups.Columns[0].Width = 200;
-            ColumnHeader columna2 = new ColumnHeader();
-            List_View_Groups.Columns.Add(columna2);
-            List_View_Groups.Columns[1].Width = 100;
-            ColumnHeader columna3 = new ColumnHeader();
-            List_View_Groups.Columns.Add(columna3);
-            List_View_Groups.Columns[2].Width = 100;
 
-            List_View_Groups.View = View.Details;
-            List_View_Groups.HeaderStyle = ColumnHeaderStyle.None;
+            ConfigureDataGridView();
 
+            usuario = Form_Menu.Loged_User;
+
+            foreach (Grupo grupo in d.GetGrupos())
+            {
+                foreach (Usuario miembro in grupo.GetMiembros())
+                {
+                    if (miembro.ID == usuario.ID)
+                    {
+                        dataGridView1.Rows.Add(grupo.Nombre);
+                    }
+                }
+
+            }
         }
 
 
@@ -59,6 +65,14 @@ namespace Split_Wise_Project
             new_group.Show();
         }
 
+        private void PB_Delete_Friend_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                usuario.DeleteFriend(usuario.amigos[row.Index].Correo);
+                dataGridView1.Rows.RemoveAt(row.Index);
+            }
+        }
         private void But_New_Group_MouseEnter(object sender, EventArgs e)
         {
             But_New_Group.Image = Properties.Resources.But_New_Group_Hold;
@@ -71,26 +85,60 @@ namespace Split_Wise_Project
 
         public void Add_To_List_Groups(string group_name, string group_description)
         {
-            ListViewItem item = new ListViewItem(group_name);
-            ListViewItem item_description = new ListViewItem(group_description);
-
-            List_View_Groups.Items.Add(item);   
-
-            item.SubItems.Add(group_description);
-            item.BackColor = Color.LightBlue;
-            item.ForeColor = Color.DarkBlue;
-            item.Font = new Font("Arial", 10, FontStyle.Bold);
-            foreach (ListViewItem.ListViewSubItem subItem in item.SubItems)
-            {
-                subItem.BackColor = Color.LightCyan;
-                subItem.ForeColor = Color.DarkCyan;
-            }
+            d.CreateGroup(group_name, group_description, usuario);
+            dataGridView1.Rows.Add(group_name);
         }
 
         private void PB_OpenListView_Click(object sender, EventArgs e)
         {
             Open_Form<Group_View>((PictureBox)sender);
             PanelGroups.Visible = true;
+        }
+
+        private void ConfigureDataGridView()
+        {
+            // Configuración básica del DataGridView
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.BackgroundColor = Color.White;
+            dataGridView1.BorderStyle = BorderStyle.FixedSingle;
+            dataGridView1.GridColor = Color.FromArgb(240, 240, 240);
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.Black;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.White;
+
+            // Eliminar fila vacía al final
+            dataGridView1.AllowUserToAddRows = false;
+
+            // Configurar columnas
+            dataGridView1.Columns.Add("Nombre", "Nombre");
+
+            // Estilo de encabezados de columna
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 9, FontStyle.Bold);
+            dataGridView1.ColumnHeadersHeight = 30;
+            dataGridView1.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Orange;
+            dataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = Color.Orange;
+
+            // Estilo de filas
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.DefaultCellStyle.BackColor = Color.White;
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
+            dataGridView1.AlternatingRowsDefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.RowTemplate.Height = 25;
+
+            // Ajuste de columnas
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.DefaultCellStyle.Padding = new Padding(5);
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
     }
 }

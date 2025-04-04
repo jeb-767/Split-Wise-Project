@@ -30,16 +30,16 @@ namespace Split_Wise_Project
 
             Usuario nuevoAmigo = usuario.AddAmigo(TB_Friends_Email.Text);
             int index = usuario.amigos.Count();
-            
 
-            Form_Friends d = new Form_Friends();
-            if(nuevoAmigo !=  null)
+
+            Form_Friends Amigos = (Form_Friends)Form_Menu.Panel_Principal_Ref.Controls.OfType<Form_Friends>().FirstOrDefault();
+            if (nuevoAmigo !=  null)
             {
-                d.Add_Friend(nuevoAmigo.Nombre, nuevoAmigo.Apellidos);
+                Amigos.Add_Friend(nuevoAmigo.Nombre, nuevoAmigo.Apellidos);
             }
             else
             {
-                MessageBox.Show("Error", "Error Title", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("El amigo no se ha podido añadir, comprueba el correo", "Error al añadir el amigo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             
             this.Close();

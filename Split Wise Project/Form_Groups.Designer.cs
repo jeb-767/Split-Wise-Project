@@ -28,30 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            List_View_Groups = new ListView();
             PB_OpenListView = new PictureBox();
             But_New_Group = new PictureBox();
             PanelGroups = new Panel();
+            dataGridView1 = new DataGridView();
+            PB_DeleteFriend = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)PB_OpenListView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)But_New_Group).BeginInit();
             PanelGroups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PB_DeleteFriend).BeginInit();
             SuspendLayout();
-            // 
-            // List_View_Groups
-            // 
-            List_View_Groups.BackColor = SystemColors.Control;
-            List_View_Groups.BorderStyle = BorderStyle.None;
-            List_View_Groups.Location = new Point(0, 0);
-            List_View_Groups.Name = "List_View_Groups";
-            List_View_Groups.Size = new Size(316, 243);
-            List_View_Groups.TabIndex = 1;
-            List_View_Groups.UseCompatibleStateImageBehavior = false;
-            List_View_Groups.View = View.List;
             // 
             // PB_OpenListView
             // 
             PB_OpenListView.Image = Properties.Resources.But_Groups;
-            PB_OpenListView.Location = new Point(0, 259);
+            PB_OpenListView.Location = new Point(0, 290);
             PB_OpenListView.Name = "PB_OpenListView";
             PB_OpenListView.Size = new Size(57, 22);
             PB_OpenListView.SizeMode = PictureBoxSizeMode.Zoom;
@@ -62,7 +54,7 @@
             // But_New_Group
             // 
             But_New_Group.Image = Properties.Resources.But_New_Group;
-            But_New_Group.Location = new Point(243, 249);
+            But_New_Group.Location = new Point(251, 262);
             But_New_Group.Name = "But_New_Group";
             But_New_Group.Size = new Size(65, 50);
             But_New_Group.SizeMode = PictureBoxSizeMode.Zoom;
@@ -75,32 +67,55 @@
             // PanelGroups
             // 
             PanelGroups.BackColor = SystemColors.Control;
-            PanelGroups.Controls.Add(But_New_Group);
-            PanelGroups.Controls.Add(PB_OpenListView);
-            PanelGroups.Controls.Add(List_View_Groups);
+            PanelGroups.Controls.Add(dataGridView1);
             PanelGroups.Location = new Point(0, 3);
             PanelGroups.Name = "PanelGroups";
-            PanelGroups.Size = new Size(319, 299);
+            PanelGroups.Size = new Size(319, 246);
             PanelGroups.TabIndex = 3;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 0);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(313, 243);
+            dataGridView1.TabIndex = 1;
+            // 
+            // PB_DeleteFriend
+            // 
+            PB_DeleteFriend.Image = Properties.Resources.But_Delete_Group;
+            PB_DeleteFriend.Location = new Point(3, 252);
+            PB_DeleteFriend.Name = "PB_DeleteFriend";
+            PB_DeleteFriend.Size = new Size(54, 32);
+            PB_DeleteFriend.SizeMode = PictureBoxSizeMode.Zoom;
+            PB_DeleteFriend.TabIndex = 4;
+            PB_DeleteFriend.TabStop = false;
+            PB_DeleteFriend.Click += PB_Delete_Friend_Click;
             // 
             // Form_Groups
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
+            Controls.Add(PB_DeleteFriend);
+            Controls.Add(PB_OpenListView);
+            Controls.Add(But_New_Group);
             Controls.Add(PanelGroups);
             Name = "Form_Groups";
             ((System.ComponentModel.ISupportInitialize)PB_OpenListView).EndInit();
             ((System.ComponentModel.ISupportInitialize)But_New_Group).EndInit();
             PanelGroups.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PB_DeleteFriend).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
         private PictureBox pictureBox1;
-        private ListView List_View_Groups;
         private PictureBox PB_OpenListView;
         private PictureBox But_New_Group;
         private Panel PanelGroups;
+        private DataGridView dataGridView1;
+        private PictureBox PB_DeleteFriend;
     }
 }
