@@ -90,7 +90,7 @@
             PB_DeleteFriend.SizeMode = PictureBoxSizeMode.Zoom;
             PB_DeleteFriend.TabIndex = 4;
             PB_DeleteFriend.TabStop = false;
-            PB_DeleteFriend.Click += PB_Delete_Friend_Click;
+            PB_DeleteFriend.Click += PB_Delete_Group_Click;
             // 
             // Form_Groups
             // 

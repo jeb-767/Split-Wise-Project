@@ -29,8 +29,6 @@ namespace Split_Wise_Project
             usuario = Form_Menu.Loged_User;
 
             Usuario nuevoAmigo = usuario.AddAmigo(TB_Friends_Email.Text);
-            int index = usuario.amigos.Count();
-
 
             Form_Friends Amigos = (Form_Friends)Form_Menu.Panel_Principal_Ref.Controls.OfType<Form_Friends>().FirstOrDefault();
             if (nuevoAmigo !=  null)

@@ -261,7 +261,6 @@ namespace Split_Wise_Project.DataAcces
                 {
                     Console.WriteLine("Error fetching objects: " + ex.Message);
                 }
-
             }
             if (varObjeto.Nombre == null)
             {

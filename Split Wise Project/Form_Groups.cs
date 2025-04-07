@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ namespace Split_Wise_Project
     {
         public Usuario usuario = new Usuario();
         DataAcces.DataAccess d = new DataAcces.DataAccess();
+        public List<Int> Id_Grupos = new List<Grupo>();
+        public List<Grupo> Id_Grupos = new List<Grupo>();
         public Form_Groups()
         {
             InitializeComponent();
@@ -26,15 +29,19 @@ namespace Split_Wise_Project
 
             foreach (Grupo grupo in d.GetGrupos())
             {
-                foreach (Usuario miembro in grupo.GetMiembros())
+                if (grupo.Estado == "Activado")
                 {
-                    if (miembro.ID == usuario.ID)
+                    foreach (Usuario miembro in grupo.GetMiembros())
                     {
-                        dataGridView1.Rows.Add(grupo.Nombre);
+                        if (miembro.ID == usuario.ID)
+                        {
+                            dataGridView1.Rows.Add(grupo.Nombre);
+                            Id_Grupos.Add(grupo);
+                        }
                     }
                 }
-
             }
+
         }
 
 
@@ -65,12 +72,18 @@ namespace Split_Wise_Project
             new_group.Show();
         }
 
-        private void PB_Delete_Friend_Click(object sender, EventArgs e)
+        private void PB_Delete_Group_Click(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                usuario.DeleteFriend(usuario.amigos[row.Index].Correo);
-                dataGridView1.Rows.RemoveAt(row.Index);
+                foreach (Grupo grupo in Id_Grupos)
+                {
+                    if(grupo.ID == Id_Grupos[row.Index])
+                    {
+                        grupo.DeleteGroup(grupo.Nombre);
+                        dataGridView1.Rows.Remove(row);
+                    }
+                }
             }
         }
         private void But_New_Group_MouseEnter(object sender, EventArgs e)
