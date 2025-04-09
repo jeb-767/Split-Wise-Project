@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,9 @@ namespace Split_Wise_Project
     public partial class Form_Groups : Form
     {
         public Usuario usuario = new Usuario();
-        DataAcces.DataAccess d = new DataAcces.DataAccess();
-        public List<Int> Id_Grupos = new List<Grupo>();
-        public List<Grupo> Id_Grupos = new List<Grupo>();
+        public DataAcces.DataAccess d = new DataAcces.DataAccess();
+        public List<int> Id_Grupos = new List<int>();
+        public List<Grupo> Grupos = new List<Grupo>();
         public Form_Groups()
         {
             InitializeComponent();
@@ -36,7 +37,8 @@ namespace Split_Wise_Project
                         if (miembro.ID == usuario.ID)
                         {
                             dataGridView1.Rows.Add(grupo.Nombre);
-                            Id_Grupos.Add(grupo);
+                            Id_Grupos.Add(grupo.ID);
+                            Grupos.Add(grupo);
                         }
                     }
                 }
@@ -76,12 +78,13 @@ namespace Split_Wise_Project
         {
             foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
-                foreach (Grupo grupo in Id_Grupos)
+                foreach (Grupo grupo in Grupos)
                 {
                     if(grupo.ID == Id_Grupos[row.Index])
                     {
                         grupo.DeleteGroup(grupo.Nombre);
                         dataGridView1.Rows.Remove(row);
+                        break;
                     }
                 }
             }
@@ -102,10 +105,20 @@ namespace Split_Wise_Project
             dataGridView1.Rows.Add(group_name);
         }
 
-        private void PB_OpenListView_Click(object sender, EventArgs e)
+        public void PB_OpenListView_Click(object sender, EventArgs e)
         {
-            Open_Form<Group_View>((PictureBox)sender);
-            PanelGroups.Visible = true;
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                if(dataGridView1.SelectedRows.Count > 1)
+                {
+                    break;
+                }
+                else
+                {
+                    Open_Form<Group_View>((PictureBox)sender);
+                    PanelGroups.Visible = true;
+                }
+            }
         }
 
         private void ConfigureDataGridView()

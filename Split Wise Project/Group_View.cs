@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Org.BouncyCastle.Crypto.Paddings;
+using Split_Wise_Project.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,7 @@ namespace Split_Wise_Project
         public Group_View()
         {
             InitializeComponent();
+            textBox1.Text = string.Empty;
         }
 
         private void PB_New_Gast_MouseEnter(object sender, EventArgs e)
