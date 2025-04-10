@@ -99,9 +99,9 @@ namespace Split_Wise_Project
             But_New_Group.Image = Properties.Resources.But_New_Group;
         }
 
-        public void Add_To_List_Groups(string group_name, string group_description)
+        public void Add_To_List_Groups(string group_name, string group_description, List<Usuario> Miembros)
         {
-            d.CreateGroup(group_name, group_description, usuario);
+            d.CreateGroup(group_name, group_description, Miembros);
             dataGridView1.Rows.Add(group_name);
         }
 

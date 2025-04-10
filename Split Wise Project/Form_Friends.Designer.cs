@@ -32,9 +32,11 @@
             But_Delete_Friend = new PictureBox();
             dataGridView1 = new DataGridView();
             Panel_Friends = new Panel();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)PB_New_Friend).BeginInit();
             ((System.ComponentModel.ISupportInitialize)But_Delete_Friend).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // PB_New_Friend
@@ -77,11 +79,23 @@
             Panel_Friends.TabIndex = 3;
             Panel_Friends.Visible = false;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.But_Delete_Group;
+            pictureBox1.Location = new Point(118, 263);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(100, 50);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click_1;
+            // 
             // Form_Friends
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
+            Controls.Add(pictureBox1);
             Controls.Add(But_Delete_Friend);
             Controls.Add(PB_New_Friend);
             Controls.Add(Panel_Friends);
@@ -90,6 +104,7 @@
             ((System.ComponentModel.ISupportInitialize)PB_New_Friend).EndInit();
             ((System.ComponentModel.ISupportInitialize)But_Delete_Friend).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -99,5 +114,6 @@
         private PictureBox But_Delete_Friend;
         private DataGridView dataGridView1;
         public Panel Panel_Friends;
+        private PictureBox pictureBox1;
     }
 }

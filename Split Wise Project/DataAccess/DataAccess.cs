@@ -409,7 +409,7 @@ namespace Split_Wise_Project.DataAcces
             }
         }
 
-        public void CreateGroup(string Nombre_Grupo, string Descripcion_Grupo, Usuario Propietario)
+        public void CreateGroup(string Nombre_Grupo, string Descripcion_Grupo, List<Usuario> Miembros)
         {
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -433,7 +433,11 @@ namespace Split_Wise_Project.DataAcces
 
                     var id = command.LastInsertedId;
                     varObjeto.ID = (int)id;
-                    AddMiembroGrupo(varObjeto, Propietario.Correo);
+                    foreach(Usuario miembro in Miembros)
+                    {
+                        AddMiembroGrupo(varObjeto, miembro.Correo);
+                    }
+                    
                 }
                 catch (Exception ex)
                 {

@@ -42,5 +42,6 @@ namespace Split_Wise_Project
             
             this.Close();
         }
+
     }
 }

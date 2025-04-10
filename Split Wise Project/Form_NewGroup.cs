@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
+using Split_Wise_Project.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,10 +18,14 @@ namespace Split_Wise_Project
 {
     public partial class Form_NewGroup : Form
     {
-
+        public List<Usuario> miembros = new List<Usuario>();
+        public Usuario usuario = new Usuario();
+        public DataAcces.DataAccess d = new DataAcces.DataAccess();
         public Form_NewGroup()
         {
             InitializeComponent();
+            usuario = Form_Menu.Loged_User;
+            miembros.Add(usuario);
         }
 
         private void But_Groups_Cancel_Click(object sender, EventArgs e)
@@ -33,7 +38,11 @@ namespace Split_Wise_Project
             Form_Groups Grupos = (Form_Groups)Form_Menu.Panel_Principal_Ref.Controls.OfType<Form_Groups>().FirstOrDefault();
             if (Grupos != null)
             {
-                Grupos.Add_To_List_Groups(TB_NewGroup_Name.Text, TB_NewGroup_Description.Text);
+                foreach (DataGridViewRow Row in dataGridView1.Rows)
+                {
+                    //miembros.Add(d.GetUsuarios());
+                }
+
             }
             this.Close();
         }
@@ -66,7 +75,20 @@ namespace Split_Wise_Project
 
         private void PB_New_Icon_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Form_Friends Amigos = (Form_Friends)Form_Menu.Panel_Principal_Ref.Controls.OfType<Form_Friends>().FirstOrDefault();
+            Amigos.SeleccionarMiembro();
+            //miembros.Add(Amigos.SeleccionarMiembro());
+            dataGridView1.Rows.Add(Amigos.SeleccionarMiembro().Nombre, Amigos.SeleccionarMiembro().Apellidos);
         }
     }
 }

@@ -36,9 +36,12 @@
             TB_NewGroup_Name = new TextBox();
             textBox1 = new TextBox();
             PB_New_Member = new PictureBox();
-            listView1 = new ListView();
+            dataGridView1 = new DataGridView();
+            pictureBox1 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)PB_New_Icon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PB_New_Member).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // textBox4
@@ -136,21 +139,32 @@
             PB_New_Member.MouseEnter += PB_New_Member_MouseEnter;
             PB_New_Member.MouseLeave += PB_New_Member_MouseLeave;
             // 
-            // listView1
+            // dataGridView1
             // 
-            listView1.BackColor = SystemColors.MenuBar;
-            listView1.Location = new Point(12, 163);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(296, 109);
-            listView1.TabIndex = 23;
-            listView1.UseCompatibleStateImageBehavior = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(12, 163);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(296, 109);
+            dataGridView1.TabIndex = 24;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.But_Friends;
+            pictureBox1.Location = new Point(137, 278);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(46, 29);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 25;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // Form_NewGroup
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(320, 314);
-            Controls.Add(listView1);
+            Controls.Add(pictureBox1);
+            Controls.Add(dataGridView1);
             Controls.Add(PB_New_Member);
             Controls.Add(textBox4);
             Controls.Add(button2);
@@ -162,6 +176,8 @@
             Name = "Form_NewGroup";
             ((System.ComponentModel.ISupportInitialize)PB_New_Icon).EndInit();
             ((System.ComponentModel.ISupportInitialize)PB_New_Member).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -175,6 +191,7 @@
         private TextBox TB_NewGroup_Name;
         private TextBox textBox1;
         private PictureBox PB_New_Member;
-        private ListView listView1;
+        private DataGridView dataGridView1;
+        private PictureBox pictureBox1;
     }
 }

@@ -15,9 +15,9 @@ namespace Split_Wise_Project
 {
     public partial class Form_Friends : Form
     {
-        
+
         public Usuario usuario = new Usuario();
-       
+
         public Form_Friends()
         {
             InitializeComponent();
@@ -78,9 +78,9 @@ namespace Split_Wise_Project
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
-    
 
-    public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
+
+        public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
         {
             //Reb un formulari i busca si el nostre panel ya te el formulari.
             //Si ya el te el mostra i si no el te el creara i el mostrara.
@@ -127,9 +127,25 @@ namespace Split_Wise_Project
             }
         }
 
-        public void Add_Friend(string nombre , string apellidos)
+        public void Add_Friend(string nombre, string apellidos)
         {
             dataGridView1.Rows.Add(nombre, apellidos);
+        }
+
+        public Usuario SeleccionarMiembro()
+        {
+            Usuario miembro = new Usuario();
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                miembro = usuario.amigos[row.Index];
+                return miembro;
+            }
+            return miembro;
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            SeleccionarMiembro();
         }
     }
 }
