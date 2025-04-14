@@ -21,11 +21,14 @@ namespace Split_Wise_Project
         public List<Usuario> miembros = new List<Usuario>();
         public Usuario usuario = new Usuario();
         public DataAcces.DataAccess d = new DataAcces.DataAccess();
+
         public Form_NewGroup()
         {
             InitializeComponent();
             usuario = Form_Menu.Loged_User;
             miembros.Add(usuario);
+            dataGridView1.Columns.Add("Nombre", "Nombre");
+            dataGridView1.Columns.Add("Apellidos", "Apellidos");
         }
 
         private void But_Groups_Cancel_Click(object sender, EventArgs e)
@@ -87,7 +90,7 @@ namespace Split_Wise_Project
         {
             Form_Friends Amigos = (Form_Friends)Form_Menu.Panel_Principal_Ref.Controls.OfType<Form_Friends>().FirstOrDefault();
             Amigos.SeleccionarMiembro();
-            //miembros.Add(Amigos.SeleccionarMiembro());
+            miembros.Add(Amigos.SeleccionarMiembro());
             dataGridView1.Rows.Add(Amigos.SeleccionarMiembro().Nombre, Amigos.SeleccionarMiembro().Apellidos);
         }
     }

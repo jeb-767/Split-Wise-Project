@@ -81,7 +81,7 @@ namespace Split_Wise_Project.DataAcces
             return lista_objetos;
         }
 
-        public List<Gasto> GetGastos()
+        public List<Gasto> GetGastos(int ID)
         {
             List<Gasto> lista_objetos = new List<Gasto>();
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -89,8 +89,44 @@ namespace Split_Wise_Project.DataAcces
                 try
                 {
                     connection.Open();
-                    string query = "SELECT * FROM splitwise.usuarios_has_gastos";
+                    string query = "SELECT * FROM splitwise.usuarios_has_gastos where Grupos_idGrupos = @id_grupo";
                     MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@id_grupo", ID);
+                    MySqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Gasto varObjeto = new Gasto()
+                        {
+                            ID = reader.GetInt32("ID_Gasto"),
+                            usuario = reader.GetInt32("Usuarios_idUsuarios"),
+                            grupo = reader.GetInt32("Grupos_idGrupos"),
+                            Cantidad = reader.GetFloat("Cantidad"),
+                            Nombre = reader.GetString("Nombre"),
+                            Estado = reader.GetString("Estado"),
+                        };
+                        lista_objetos.Add(varObjeto);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error fetching objects: " + ex.Message);
+                }
+            }
+            return lista_objetos;
+        }
+
+        public List<Gasto> GetGastosPersinaGrupo(int ID , int ID_Usuario)
+        {
+            List<Gasto> lista_objetos = new List<Gasto>();
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM splitwise.usuarios_has_gastos where Grupos_idGrupos = @id_grupo and and Usuarios_idUsuarios = @id_usuarion+" ;
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.AddWithValue("@id_grupo", ID);
+                    command.Parameters.AddWithValue("@id_usuario", ID_Usuario);
                     MySqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {

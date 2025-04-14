@@ -22,9 +22,11 @@ namespace Split_Wise_Project
         {
             InitializeComponent();
             Panel_Principal_Ref = Panel_Principal;
-            DataAcces.DataAccess d= new DataAcces.DataAccess();
+            DataAcces.DataAccess d = new DataAcces.DataAccess();
+            Controller.Controlador c = new Controller.Controlador();
             Loged_User = d.GetUsuarios()[0];
             Loged_User.GetAmigos();
+            c.AlgoritmoPago();
         }
    
         public void Open_Form<my_form>(PictureBox menu_button) where my_form : Form, new()
